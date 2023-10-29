@@ -25,53 +25,41 @@ namespace FaulknerCountyMuseumGallery.Pages.Artists
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Artists == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var artist =  await _context.Artists.FirstOrDefaultAsync(m => m.ID == id);
-            if (artist == null)
+            Artist = await _context.Artists.FindAsync(id);
+
+            if (Artist == null)
             {
                 return NotFound();
             }
-            Artist = artist;
             return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
+            var artistToUpdate = await _context.Artists.FindAsync(id);
+
+            if (artistToUpdate == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(Artist).State = EntityState.Modified;
-
-            try
+            if (await TryUpdateModelAsync<Artist>(
+                artistToUpdate,
+                "artist",
+                a => a.Name))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ArtistExists(Artist.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool ArtistExists(int id)
-        {
-          return _context.Artists.Any(e => e.ID == id);
+            return Page();
         }
     }
 }

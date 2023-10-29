@@ -29,7 +29,11 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
                 return NotFound();
             }
 
-            var artwork = await _context.Artworks.FirstOrDefaultAsync(m => m.ArtworkID == id);
+            var artwork = await _context.Artworks
+                .AsNoTracking()
+                .Include(a => a.Artist)
+                .Include(a => a.Medium)
+                .FirstOrDefaultAsync(m => m.ArtworkID == id);
 
             if (artwork == null)
             {

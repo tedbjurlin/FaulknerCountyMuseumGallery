@@ -8,10 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FaulknerCountyMuseumGallery.Data;
 using FaulknerCountyMuseumGallery.Models;
+using FaulknerCountyMuseumGallery.Pages.Courses;
 
 namespace FaulknerCountyMuseumGallery.Pages.Artworks
 {
-    public class EditModel : PageModel
+    public class EditModel : ArtistMediumPageModel
     {
         private readonly FaulknerCountyMuseumGallery.Data.GalleryContext _context;
 
@@ -30,50 +31,52 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
                 return NotFound();
             }
 
-            var artwork =  await _context.Artworks.FirstOrDefaultAsync(m => m.ArtworkID == id);
+            var artwork =  await _context.Artworks
+                .Include(a => a.Artist)
+                .Include(a => a.Medium).FirstOrDefaultAsync(m => m.ArtworkID == id);
             if (artwork == null)
             {
                 return NotFound();
             }
             Artwork = artwork;
-           ViewData["ArtistID"] = new SelectList(_context.Artists, "ID", "Name");
-           ViewData["MediumID"] = new SelectList(_context.Mediums, "ID", "Description");
+            PopulateArtistsDropDownList(_context, Artwork.ArtistID);
+            PopulateMediumsDropDownList(_context, Artwork.MediumID);
             return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(Artwork).State = EntityState.Modified;
+            var artworkToUpdate = await _context.Artworks.FindAsync(id);
 
-            try
+            if (artworkToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            if (await TryUpdateModelAsync<Artwork>(
+                artworkToUpdate,
+                "artwork",
+                s => s.ArtworkID,
+                s => s.ArtistID,
+                s => s.MediumID,
+                s => s.Title,
+                s => s.ImageLink,
+                s => s.Size))
             {
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ArtworkExists(Artwork.ArtworkID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return RedirectToPage("./Index");
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool ArtworkExists(int id)
-        {
-          return _context.Artworks.Any(e => e.ArtworkID == id);
+            PopulateArtistsDropDownList(_context, artworkToUpdate.ArtistID);
+            PopulateMediumsDropDownList(_context, artworkToUpdate.MediumID);
+            return Page();
         }
     }
 }

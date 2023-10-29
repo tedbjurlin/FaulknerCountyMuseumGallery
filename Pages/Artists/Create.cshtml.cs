@@ -31,15 +31,19 @@ namespace FaulknerCountyMuseumGallery.Pages.Artists
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid)
+            var emptyArtist = new Artist();
+
+            if (await TryUpdateModelAsync<Artist>(
+                emptyArtist,
+                "artist",
+                a => a.Name))
             {
-                return Page();
+                _context.Artists.Add(emptyArtist);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
 
-            _context.Artists.Add(Artist);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            return Page();
         }
     }
 }

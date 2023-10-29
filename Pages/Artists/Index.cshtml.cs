@@ -19,14 +19,29 @@ namespace FaulknerCountyMuseumGallery.Pages.Artists
             _context = context;
         }
 
+        public string NameSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
+
         public IList<Artist> Artists { get;set; } = default!;
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder)
         {
-            if (_context.Artists != null)
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            IQueryable<Artist> artistsIQ = from a in _context.Artists select a;
+
+            switch (sortOrder)
             {
-                Artists = await _context.Artists.ToListAsync();
+                case "name_desc":
+                    artistsIQ = artistsIQ.OrderByDescending(a => a.Name);
+                    break;
+                default:
+                    artistsIQ = artistsIQ.OrderBy(a => a.Name);
+                    break;
             }
+
+            Artists = await artistsIQ.AsNoTracking().ToListAsync();
         }
     }
 }

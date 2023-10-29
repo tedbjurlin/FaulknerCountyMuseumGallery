@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using FaulknerCountyMuseumGallery.Data;
 using FaulknerCountyMuseumGallery.Models;
+using FaulknerCountyMuseumGallery.Pages.Courses;
 
 namespace FaulknerCountyMuseumGallery.Pages.Artworks
 {
-    public class CreateModel : PageModel
+    public class CreateModel : ArtistMediumPageModel
     {
         private readonly FaulknerCountyMuseumGallery.Data.GalleryContext _context;
 
@@ -21,8 +22,8 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
 
         public IActionResult OnGet()
         {
-        ViewData["ArtistID"] = new SelectList(_context.Artists, "ID", "Name");
-        ViewData["MediumID"] = new SelectList(_context.Mediums, "ID", "Description");
+            PopulateArtistsDropDownList(_context);
+            PopulateMediumsDropDownList(_context);
             return Page();
         }
 
@@ -33,15 +34,27 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid)
+            var emptyArtwork = new Artwork();
+
+            if (await TryUpdateModelAsync<Artwork>(
+                emptyArtwork,
+                "artist",
+                s => s.ArtworkID,
+                s => s.ArtistID,
+                s => s.MediumID,
+                s => s.Title,
+                s => s.ImageLink,
+                s => s.Size))
             {
-                return Page();
+                _context.Artworks.Add(emptyArtwork);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
+        
+            PopulateArtistsDropDownList(_context, emptyArtwork.ArtistID);
+            PopulateMediumsDropDownList(_context, emptyArtwork.MediumID);
+            return Page();
 
-            _context.Artworks.Add(Artwork);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
         }
     }
 }
