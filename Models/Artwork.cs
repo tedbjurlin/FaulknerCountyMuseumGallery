@@ -5,6 +5,7 @@ namespace FaulknerCountyMuseumGallery.Models
         public int ArtworkID { get; set; }
         public int MediumID { get; set; }
         public int ArtistID { get; set; }
+        public string Title { get; set; }
         public string ImageLink { get; set; }
         public string Size { get; set; }
 
