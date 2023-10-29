@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
 
-namespace FaulknerCountyMuseumGallery.Pages.Students
+namespace FaulknerCountyMuseumGallery.Pages.Mediums
 {
     public class DeleteModel : PageModel
     {

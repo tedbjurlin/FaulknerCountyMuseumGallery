@@ -1,0 +1,60 @@
+@page "{id:int?}"
+@model FaulknerCountyMuseumGallery.Pages.Artworks.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Image URL
+            </th>
+            <th>
+                Size
+            </th>
+            <th>
+                Medium
+            </th>
+            <th>
+                Artist
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ArtworkData.Artworks) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medium.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artist.Name)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ArtworkID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ArtworkID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ArtworkID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

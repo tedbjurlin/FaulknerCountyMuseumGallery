@@ -20,9 +20,9 @@ namespace FaulknerCountyMuseumGallery.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Medium>().ToTable("Course");
-            modelBuilder.Entity<Artwork>().ToTable("Enrollment");
-            modelBuilder.Entity<Artist>().ToTable("Student");
+            modelBuilder.Entity<Medium>().ToTable("Medium");
+            modelBuilder.Entity<Artwork>().ToTable("Artwork");
+            modelBuilder.Entity<Artist>().ToTable("Artist");
         }
     }
 }
