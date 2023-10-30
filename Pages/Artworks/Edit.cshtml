@@ -1,0 +1,61 @@
+@page
+@model FaulknerCountyMuseumGallery.Pages.Artworks.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Artwork</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Artwork.ArtworkID" />
+            <div class="form-group">
+                <label asp-for="Artwork.ArtworkID" class="control-label"></label>
+                <div>@Html.DisplayFor(model => model.Artwork.ArtworkID)</div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artwork.Title" class="control-label"></label>
+                <input asp-for="Artwork.Title" class="form-control" />
+                <span asp-validation-for="Artwork.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artwork.ImageLink" class="control-label"></label>
+                <input asp-for="Artwork.ImageLink" class="form-control" />
+                <span asp-validation-for="Artwork.ImageLink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artwork.Size" class="control-label"></label>
+                <input asp-for="Artwork.Size" class="form-control" />
+                <span asp-validation-for="Artwork.Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artwork.Artist" class="control-label"></label>
+                <select asp-for="Artwork.ArtistID" class="form-control"
+                    asp-items="@Model.ArtistNameSL"></select>
+                <span asp-validation-for="Artwork.ArtistID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artwork.Medium" class="control-label"></label>
+                <select asp-for="Artwork.MediumID" class="form-control"
+                    asp-items="@Model.MediumNameSL"></select>
+                <span asp-validation-for="Artwork.MediumID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
