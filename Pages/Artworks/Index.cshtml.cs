@@ -20,6 +20,11 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
             _context = context;
         }
 
+        public string NameSort { get; set; }
+        public string DateSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
+
         public ArtworkIndexData ArtworkData { get; set; }
         public int ArtworkID { get; set; }
 

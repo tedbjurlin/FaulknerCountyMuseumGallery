@@ -12,24 +12,44 @@ namespace FaulknerCountyMuseumGallery.Pages.Artists
 {
     public class IndexModel : PageModel
     {
-        private readonly FaulknerCountyMuseumGallery.Data.GalleryContext _context;
+        private readonly GalleryContext _context;
+        private readonly IConfiguration Configuration;
 
-        public IndexModel(FaulknerCountyMuseumGallery.Data.GalleryContext context)
+        public IndexModel(GalleryContext context, IConfiguration configuration)
         {
             _context = context;
+            Configuration = configuration;
         }
 
         public string NameSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
-        public IList<Artist> Artists { get;set; } = default!;
+        public PaginatedList<Artist> Artists { get;set; } = default!;
 
-        public async Task OnGetAsync(string sortOrder)
+        public async Task OnGetAsync(string sortOrder,
+            string currentFilter, string searchString, int? pageIndex)
         {
+            CurrentSort = sortOrder;
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
 
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+
             IQueryable<Artist> artistsIQ = from a in _context.Artists select a;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                artistsIQ = artistsIQ.Where(a => a.Name.Contains(searchString));
+            }
 
             switch (sortOrder)
             {
@@ -41,7 +61,9 @@ namespace FaulknerCountyMuseumGallery.Pages.Artists
                     break;
             }
 
-            Artists = await artistsIQ.AsNoTracking().ToListAsync();
+            var pageSize = Configuration.GetValue("PageSize", 4);
+            Artists = await PaginatedList<Artist>.CreateAsync(
+                artistsIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
         }
     }
 }
