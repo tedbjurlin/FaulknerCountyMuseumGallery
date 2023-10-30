@@ -13,20 +13,56 @@ namespace FaulknerCountyMuseumGallery.Pages.Mediums
     public class IndexModel : PageModel
     {
         private readonly FaulknerCountyMuseumGallery.Data.GalleryContext _context;
+        private readonly IConfiguration Configuration;
 
-        public IndexModel(FaulknerCountyMuseumGallery.Data.GalleryContext context)
+        public IndexModel(FaulknerCountyMuseumGallery.Data.GalleryContext context,
+            IConfiguration configuration)
         {
             _context = context;
+            Configuration = configuration;
         }
 
-        public IList<Medium> Medium { get;set; } = default!;
+        public string DescriptionSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
 
-        public async Task OnGetAsync()
+        public PaginatedList<Medium> Mediums { get;set; } = default!;
+
+        public async Task OnGetAsync(string sortOrder,
+            string currentFilter, string searchString, int? pageIndex)
         {
-            if (_context.Mediums != null)
+            CurrentSort = sortOrder;
+            DescriptionSort = String.IsNullOrEmpty(sortOrder) ? "description_desc" : "";
+            if (searchString != null)
             {
-                Medium = await _context.Mediums.ToListAsync();
+                pageIndex = 1;
             }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+
+            IQueryable<Medium> mediumsIQ = from m in _context.Mediums select m;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                mediumsIQ = mediumsIQ.Where(m => m.Description.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "description_desc":
+                    mediumsIQ = mediumsIQ.OrderByDescending(m => m.Description);
+                    break;
+                default:
+                    mediumsIQ = mediumsIQ.OrderBy(m => m.Description);
+                    break;
+            }
+
+            var pageSize = Configuration.GetValue("PageSize", 4);
+            Mediums = await PaginatedList<Medium>.CreateAsync(
+                mediumsIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
         }
     }
 }

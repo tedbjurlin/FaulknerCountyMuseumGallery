@@ -2,19 +2,34 @@
 @model FaulknerCountyMuseumGallery.Pages.Artworks.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Artworks";
 }
 
-<h1>Index</h1>
+<h1>Artworks</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by title, medium, or artist:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                Title
+                <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.ArtworkData.Artworks.First().Title)
+                </a>
             </th>
             <th>
                 Image URL
@@ -23,10 +38,16 @@
                 Size
             </th>
             <th>
-                Medium
+                <a asp-page="./Index" asp-route-sortOrder="@Model.MediumSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.ArtworkData.Artworks.First().Medium)
+                </a>
             </th>
             <th>
-                Artist
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ArtistSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.ArtworkData.Artworks.First().Artist)
+                </a>
             </th>
             <th></th>
         </tr>
@@ -58,3 +79,23 @@
 }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.ArtworkData.Artworks.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.ArtworkData.Artworks.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.ArtworkData.Artworks.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.ArtworkData.Artworks.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-primary @nextDisabled">
+    Next
+</a>

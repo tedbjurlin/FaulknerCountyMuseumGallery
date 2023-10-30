@@ -7,7 +7,7 @@ namespace FaulknerCountyMuseumGallery.Models.GalleryViewModels
 {
     public class ArtworkIndexData
     {
-        public IEnumerable<Artwork> Artworks { get; set; }
+        public PaginatedList<Artwork> Artworks { get; set; }
         public Artist Artist { get; set; }
         public Medium Medium { get; set; }
     }

@@ -14,27 +14,80 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
     public class IndexModel : PageModel
     {
         private readonly FaulknerCountyMuseumGallery.Data.GalleryContext _context;
+        private readonly IConfiguration Configuration;
 
-        public IndexModel(FaulknerCountyMuseumGallery.Data.GalleryContext context)
+        public IndexModel(FaulknerCountyMuseumGallery.Data.GalleryContext context,
+                            IConfiguration configuration)
         {
             _context = context;
+            Configuration = configuration;
         }
 
-        public string NameSort { get; set; }
-        public string DateSort { get; set; }
+        public string TitleSort { get; set; }
+        public string ArtistSort { get; set; }
+        public string MediumSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
         public ArtworkIndexData ArtworkData { get; set; }
         public int ArtworkID { get; set; }
 
-        public async Task OnGetAsync(int? id, int? mediumID)
+        public async Task OnGetAsync(int? id, int? mediumID, string sortOrder,
+            string currentFilter, string searchString, int? pageIndex)
         {
+            TitleSort = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ArtistSort = sortOrder == "Artist" ? "artist_desc" : "Artist";
+            MediumSort = sortOrder == "Medium" ? "medium_desc" : "Medium";
+
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            CurrentFilter = searchString;
+
+            IQueryable<Artwork> artworksIQ = from a in _context.Artworks select a;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                artworksIQ = artworksIQ.Where(a => a.Title.Contains(searchString)
+                                        || a.Artist.Name.Contains(searchString)
+                                        || a.Medium.Description.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    artworksIQ = artworksIQ.OrderByDescending(a => a.Title);
+                    break;
+                case "Artist":
+                    artworksIQ = artworksIQ.OrderBy(a => a.Artist.Name);
+                    break;
+                case "artist_desc":
+                    artworksIQ = artworksIQ.OrderByDescending(a => a.Artist.Name);
+                    break;
+                case "Medium":
+                    artworksIQ = artworksIQ.OrderBy(a => a.Medium.Description);
+                    break;
+                case "medium_desc":
+                    artworksIQ = artworksIQ.OrderByDescending(a => a.Medium.Description);
+                    break;
+                default:
+                    artworksIQ = artworksIQ.OrderBy(a => a.Title);
+                    break;
+            }
+
+            var pageSize = Configuration.GetValue("PageSize", 4);
+
             ArtworkData = new ArtworkIndexData();
-            ArtworkData.Artworks = await _context.Artworks
+            ArtworkData.Artworks = await PaginatedList<Artwork>.CreateAsync(
+                artworksIQ
+                .AsNoTracking()
                 .Include(i => i.Artist)
-                .Include(i => i.Medium)
-                .ToListAsync();
+                .Include(i => i.Medium), pageIndex ?? 1, pageSize);
             
             if (id != null)
             {
