@@ -18,8 +18,6 @@
     </div>
 </form>
 
-<html>
-<head>
 <style>
 div.gallery {
   border: 1px solid #ccc;
@@ -91,17 +89,14 @@ div.desc {
   column-count:         1;
   }
 }
-
-
 </style>
-</head>
-<body>
+
 <section id="photos">
 
 @foreach (var item in Model.ArtworkData.Artworks) {
     <div class="responsive">
     <div class="gallery">
-        <a target="_blank" href="/index">
+        <a target="_self" asp-page="./GalleryDetails" asp-route-id="@item.ArtworkID">
         <img src="@Html.DisplayFor(modelItem => item.ImageLink)" alt="@Html.DisplayFor(modelItem => item.Title)" width="600" height="400">
         </a>
         <div class="desc">@Html.DisplayFor(modelItem => item.Title)</div>
@@ -110,8 +105,6 @@ div.desc {
     }
 
 </section>
-</body>
-</html>
 
 @{
     var prevDisabled = !Model.ArtworkData.Artworks.HasPreviousPage ? "disabled" : "";
