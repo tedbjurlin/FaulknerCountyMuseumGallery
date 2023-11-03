@@ -43,22 +43,22 @@ div.desc {
 
 .responsive {
   padding: 6px;
-  float: left;
   -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
   page-break-inside: avoid; /* Firefox */
   break-inside: avoid; /* IE 10+ */
+  display: inline-block;
 }
 
 #photos {
   /* Prevent vertical gaps */
   line-height: 1;
-   
   -webkit-column-count: 5;
   -webkit-column-gap:   0px;
   -moz-column-count:    5;
   -moz-column-gap:      0px;
   column-count:         5;
-  column-gap:           0px;  
+  column-gap:           0px;
+  column-fill: balance;
 }
 
 @@media (max-width: 1200px) {
@@ -103,7 +103,6 @@ div.desc {
     </div>
     </div>
     }
-
 </section>
 
 @{

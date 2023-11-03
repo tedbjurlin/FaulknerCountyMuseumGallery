@@ -53,12 +53,14 @@ namespace FaulknerCountyMuseumGallery.Pages
             IQueryable<Artwork> artworksIQ = from a in _context.Artworks select a;
             if (!String.IsNullOrEmpty(searchString))
             {
-                artworksIQ = artworksIQ.Where(a => a.Title.Contains(searchString)
-                                        || a.Artist.Name.Contains(searchString)
-                                        || a.Medium.Description.Contains(searchString));
+                artworksIQ = artworksIQ.Where(a => a.Title.ToUpper().Contains(searchString.ToUpper())
+                                        || a.Artist.Name.ToUpper().Contains(searchString.ToUpper())
+                                        || a.Medium.Description.ToUpper().Contains(searchString.ToUpper()));
             }
 
             var pageSize = Configuration.GetValue("PageSize", 4);
+
+            
 
             ArtworkData = new ArtworkIndexData();
             ArtworkData.Artworks = await PaginatedList<Artwork>.CreateAsync(
