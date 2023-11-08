@@ -18,5 +18,16 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  margin-bottom: 100px;
+}
+
+.instaL_img {
+  width: 50px;
+  height: auto;
+}
+
+
+.faceL_img {
+  width: 50px;
+  height: auto;
 }
