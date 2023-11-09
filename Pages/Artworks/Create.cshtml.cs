@@ -38,7 +38,7 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
 
             if (await TryUpdateModelAsync<Artwork>(
                 emptyArtwork,
-                "artist",
+                "artwork",
                 s => s.ArtworkID,
                 s => s.ArtistID,
                 s => s.MediumID,

@@ -38,6 +38,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Artwork.ArtistID" class="control-label"></label>
+                <select asp-for="Artwork.ArtistID" class="form-control"
                         asp-items="@Model.ArtistNameSL">
                     <option value="">-- Select Artist --</option>
                 </select>
