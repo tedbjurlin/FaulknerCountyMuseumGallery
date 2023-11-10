@@ -29,8 +29,10 @@
 }
 
 .home_dis {
+    font-family: 'Carlito', sans-serif;
     width: 1300px;
     height: 750px;
     overflow: hidden;
     position: relative;
 }
+

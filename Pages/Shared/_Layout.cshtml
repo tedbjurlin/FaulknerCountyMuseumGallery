@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FaulknerCountyMuseumGallery.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Home.css" asp-append-version="true" />
+    @* links for carlito font *@
+    @* use: font-family: 'Carlito', sans-serif; in css *@
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Carlito&display=swap" rel="stylesheet"> 
+
 </head>
 <body>
     <header>
@@ -40,9 +46,15 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    @* <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2023 - Faulkner County Museum - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer> *@
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <a href="whaterverthelinktotheinstagramis"><img class="instaL_img" src="~/instagram_logo.png" alt="img"/></a>
+            <a href="whateverthelinkistothefacebook"><img class="faceL_img" src="~/face_book_logo.webp" alt="img"/></a>
         </div>
     </footer>
 
