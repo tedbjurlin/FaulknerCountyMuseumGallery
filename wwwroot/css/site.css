@@ -24,10 +24,14 @@ body {
 .instaL_img {
   width: 50px;
   height: auto;
+  float: right;
+  padding: 5px;
 }
 
 
 .faceL_img {
   width: 50px;
   height: auto;
+  float: right;
+  padding: 5px;
 }
