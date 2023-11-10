@@ -27,10 +27,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/About">About</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Gallery">Gallery</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/About">About</a>
+                            <a class="nav-link text-dark" target="_blank" href="https://my-site-104396.square.site">Donate</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Admin">Admin</a>
@@ -53,8 +56,17 @@
     </footer> *@
     <footer class="border-top footer text-muted">
         <div class="container">
-            <a href="whaterverthelinktotheinstagramis"><img class="instaL_img" src="~/instagram_logo.png" alt="img"/></a>
-            <a href="whateverthelinkistothefacebook"><img class="faceL_img" src="~/face_book_logo.webp" alt="img"/></a>
+            <div class="row">
+                <div class="col-sm-8">
+                    <p>The Faulkner County Museum is a nonprofit registered under 501(c)(3) #71-0726554.</p>
+                </div>
+                <div class="col-sm-4">
+                    <div class="float-right">
+                        <a href="https://www.instagram.com/faulknercountymuseum/"><img class="instaL_img" src="~/instagram_logo.png" alt="img"/></a>
+                        <a href="https://www.facebook.com/FaulknerCoMuseum/"><img class="faceL_img" src="~/face_book_logo.webp" alt="img"/></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
