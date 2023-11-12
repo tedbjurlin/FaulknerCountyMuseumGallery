@@ -5,6 +5,8 @@
   margin-right: auto;
   width: 1300px;
   height: auto;
+  border-style: solid;
+  border-color: black;
 }
 
 .logo {
@@ -17,6 +19,8 @@
     right: 200px;
     margin-top: 120px;
     overflow: hidden;
+    border-style: solid;
+    border-color: black;
 }
 
 .M_logo_img {
@@ -35,4 +39,5 @@
     overflow: hidden;
     position: relative;
 }
+
 
