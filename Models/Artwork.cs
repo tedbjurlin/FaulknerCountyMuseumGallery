@@ -18,7 +18,10 @@ namespace FaulknerCountyMuseumGallery.Models
         [Required]
         [Display(Name = "Artist")]
         public int ArtistID { get; set; }
-
+        [Required]
+        [Display(Name = "Collection")]
+        public int CollectionID { get; set; }
+        
         public Medium Medium { get; set; }
         public Artist Artist { get; set; }
     }

@@ -40,20 +40,28 @@ namespace FaulknerCountyMuseumGallery.Data
             context.Artists.AddRange(Artists);
             context.SaveChanges();
 
+            var collections = new Collection[]
+            {
+                new Collection{Name="No Collection"}
+            };
+
+            context.Collections.AddRange(collections);
+            context.SaveChanges();
+
             var artworks = new Artwork[]
             {
-                new Artwork{MediumID=1,ArtistID=1,Title="The Dance Lesson",ImageLink="",Size=""},
-                new Artwork{MediumID=1,ArtistID=4,Title="Lake George Reflection",ImageLink="",Size=""},
-                new Artwork{MediumID=1,ArtistID=3,Title="The Birth of Venus",ImageLink="",Size=""},
-                new Artwork{MediumID=2,ArtistID=2,Title="Crushed Campbell's Soup Can (Beef Noodle)",ImageLink="",Size=""},
-                new Artwork{MediumID=2,ArtistID=5,Title="Self Portrait",ImageLink="",Size=""},
-                new Artwork{MediumID=2,ArtistID=6,Title="Young Woman in a Black and Green Bonnet",ImageLink="",Size=""},
-                new Artwork{MediumID=3,ArtistID=1,Title="Dancer",ImageLink="",Size=""},
-                new Artwork{MediumID=4,ArtistID=1,Title="Dancers Resting",ImageLink="",Size=""},
-                new Artwork{MediumID=4,ArtistID=2,Title="Skull",ImageLink="",Size=""},
-                new Artwork{MediumID=5,ArtistID=3,Title="Portrait of a Young Man",ImageLink="",Size=""},
-                new Artwork{MediumID=6,ArtistID=4,Title="Seaweed",ImageLink="",Size=""},
-                new Artwork{MediumID=7,ArtistID=5,Title="Starry Night",ImageLink="",Size=""},
+                new Artwork{MediumID=1,ArtistID=1,CollectionID=1,Title="The Dance Lesson",ImageLink="",Size=""},
+                new Artwork{MediumID=1,ArtistID=4,CollectionID=1,Title="Lake George Reflection",ImageLink="",Size=""},
+                new Artwork{MediumID=1,ArtistID=3,CollectionID=1,Title="The Birth of Venus",ImageLink="",Size=""},
+                new Artwork{MediumID=2,ArtistID=2,CollectionID=1,Title="Crushed Campbell's Soup Can (Beef Noodle)",ImageLink="",Size=""},
+                new Artwork{MediumID=2,ArtistID=5,CollectionID=1,Title="Self Portrait",ImageLink="",Size=""},
+                new Artwork{MediumID=2,ArtistID=6,CollectionID=1,Title="Young Woman in a Black and Green Bonnet",ImageLink="",Size=""},
+                new Artwork{MediumID=3,ArtistID=1,CollectionID=1,Title="Dancer",ImageLink="",Size=""},
+                new Artwork{MediumID=4,ArtistID=1,CollectionID=1,Title="Dancers Resting",ImageLink="",Size=""},
+                new Artwork{MediumID=4,ArtistID=2,CollectionID=1,Title="Skull",ImageLink="",Size=""},
+                new Artwork{MediumID=5,ArtistID=3,CollectionID=1,Title="Portrait of a Young Man",ImageLink="",Size=""},
+                new Artwork{MediumID=6,ArtistID=4,CollectionID=1,Title="Seaweed",ImageLink="",Size=""},
+                new Artwork{MediumID=7,ArtistID=5,CollectionID=1,Title="Starry Night",ImageLink="",Size=""},
             };
 
             context.Artworks.AddRange(artworks);
