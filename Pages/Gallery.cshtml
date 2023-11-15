@@ -9,7 +9,7 @@
 
 <form asp-page="./Gallery" method="get">
     <div>
-        <p  class="b">
+        <p>
             Search by title, medium, or artist:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
             <input type="submit" value="Search" id="searchb" />
@@ -114,13 +114,13 @@ div.desc {
    asp-route-sortOrder="@Model.CurrentSort"
    asp-route-pageIndex="@(Model.ArtworkData.Artworks.PageIndex - 1)"
    asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-primary @prevDisabled">
+   class="btn btn-primary @prevDisabled" id="searchb">
     Previous
 </a>
 <a asp-page="./Index"
    asp-route-sortOrder="@Model.CurrentSort"
    asp-route-pageIndex="@(Model.ArtworkData.Artworks.PageIndex + 1)"
    asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-primary @nextDisabled">
+   class="btn btn-primary @nextDisabled" id="searchb">
     Next
 </a>
