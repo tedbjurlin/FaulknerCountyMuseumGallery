@@ -10,5 +10,6 @@ namespace FaulknerCountyMuseumGallery.Models.GalleryViewModels
         public PaginatedList<Artwork> Artworks { get; set; }
         public Artist Artist { get; set; }
         public Medium Medium { get; set; }
+        public Collection Collection { get; set; }
     }
 }
