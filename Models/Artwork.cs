@@ -24,5 +24,6 @@ namespace FaulknerCountyMuseumGallery.Models
         
         public Medium Medium { get; set; }
         public Artist Artist { get; set; }
+        public Collection Collection { get; set; }
     }
 }

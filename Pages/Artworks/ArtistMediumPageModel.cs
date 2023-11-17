@@ -7,10 +7,11 @@ using System.Linq;
 
 namespace FaulknerCountyMuseumGallery.Pages.Courses
 {
-    public class ArtistMediumPageModel : PageModel
+    public class ArtistMediumCollectionPageModel : PageModel
     {
         public SelectList ArtistNameSL { get; set; }
         public SelectList MediumNameSL { get; set; }
+        public SelectList CollectionNameSL { get; set; }
 
         public void PopulateArtistsDropDownList(GalleryContext _context,
             object selectedArtist = null)
@@ -36,6 +37,19 @@ namespace FaulknerCountyMuseumGallery.Pages.Courses
                 nameof(Medium.ID),
                 nameof(Medium.Description),
                 selectedMedium);
+        }
+        
+        public void PopulateCollectionsDropDownList(GalleryContext _context,
+            object selectedCollection = null)
+        {
+            var collectionsQuery = from c in _context.Collections
+                                   orderby c.Name // Sort by name.
+                                   select c;
+
+            CollectionNameSL = new SelectList(collectionsQuery.AsNoTracking(),
+                nameof(Collection.ID),
+                nameof(Collection.Name),
+                selectedCollection);
         }
     }
 }
