@@ -12,7 +12,7 @@ using FaulknerCountyMuseumGallery.Pages.Courses;
 
 namespace FaulknerCountyMuseumGallery.Pages.Artworks
 {
-    public class EditModel : ArtistMediumPageModel
+    public class EditModel : ArtistMediumCollectionPageModel
     {
         private readonly FaulknerCountyMuseumGallery.Data.GalleryContext _context;
 
@@ -33,7 +33,9 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
 
             var artwork =  await _context.Artworks
                 .Include(a => a.Artist)
-                .Include(a => a.Medium).FirstOrDefaultAsync(m => m.ArtworkID == id);
+                .Include(a => a.Medium)
+                .Include(a => a.Collection)
+                .FirstOrDefaultAsync(m => m.ArtworkID == id);
             if (artwork == null)
             {
                 return NotFound();
@@ -41,6 +43,7 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
             Artwork = artwork;
             PopulateArtistsDropDownList(_context, Artwork.ArtistID);
             PopulateMediumsDropDownList(_context, Artwork.MediumID);
+            PopulateCollectionsDropDownList(_context, Artwork.CollectionID);
             return Page();
         }
 
@@ -66,6 +69,7 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
                 s => s.ArtworkID,
                 s => s.ArtistID,
                 s => s.MediumID,
+                s => s.CollectionID,
                 s => s.Title,
                 s => s.ImageLink,
                 s => s.Size))

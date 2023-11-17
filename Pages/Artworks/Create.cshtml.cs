@@ -11,7 +11,7 @@ using FaulknerCountyMuseumGallery.Pages.Courses;
 
 namespace FaulknerCountyMuseumGallery.Pages.Artworks
 {
-    public class CreateModel : ArtistMediumPageModel
+    public class CreateModel : ArtistMediumCollectionPageModel
     {
         private readonly FaulknerCountyMuseumGallery.Data.GalleryContext _context;
 
@@ -24,6 +24,7 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
         {
             PopulateArtistsDropDownList(_context);
             PopulateMediumsDropDownList(_context);
+            PopulateCollectionsDropDownList(_context);
             return Page();
         }
 
@@ -42,6 +43,7 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
                 s => s.ArtworkID,
                 s => s.ArtistID,
                 s => s.MediumID,
+                s => s.CollectionID,
                 s => s.Title,
                 s => s.ImageLink,
                 s => s.Size))
@@ -53,6 +55,7 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
         
             PopulateArtistsDropDownList(_context, emptyArtwork.ArtistID);
             PopulateMediumsDropDownList(_context, emptyArtwork.MediumID);
+            PopulateCollectionsDropDownList(_context, emptyArtwork.CollectionID);
             return Page();
 
         }
