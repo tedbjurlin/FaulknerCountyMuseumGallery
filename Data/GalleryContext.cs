@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using FaulknerCountyMuseumGallery.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace FaulknerCountyMuseumGallery.Data
 {
-    public class GalleryContext : DbContext
+    public class GalleryContext : IdentityDbContext<IdentityUser>
     {
         public GalleryContext (DbContextOptions<GalleryContext> options)
             : base(options)
@@ -20,6 +22,7 @@ namespace FaulknerCountyMuseumGallery.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Medium>().ToTable("Medium");
             modelBuilder.Entity<Artwork>().ToTable("Artwork");
             modelBuilder.Entity<Artist>().ToTable("Artist");
