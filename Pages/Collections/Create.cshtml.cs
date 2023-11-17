@@ -31,15 +31,18 @@ namespace FaulknerCountyMuseumGallery.Pages.Collections
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid)
+            var emptyCollection = new Collection();
+
+            if (await TryUpdateModelAsync<Collection>(
+                emptyCollection,
+                "collection",
+                c => c.Name))
             {
-                return Page();
+                _context.Collections.Add(emptyCollection);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-
-            _context.Collections.Add(Collection);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            return Page();
         }
     }
 }

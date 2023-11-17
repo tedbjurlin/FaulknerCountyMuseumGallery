@@ -13,23 +13,27 @@ namespace FaulknerCountyMuseumGallery.Pages.Collections
     public class DeleteModel : PageModel
     {
         private readonly FaulknerCountyMuseumGallery.Data.GalleryContext _context;
+        private readonly ILogger<DeleteModel> _logger;
 
-        public DeleteModel(FaulknerCountyMuseumGallery.Data.GalleryContext context)
+        public DeleteModel(FaulknerCountyMuseumGallery.Data.GalleryContext context,
+                            ILogger<DeleteModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [BindProperty]
       public Collection Collection { get; set; }
+      public String ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
             if (id == null || _context.Collections == null)
             {
                 return NotFound();
             }
 
-            var collection = await _context.Collections.FirstOrDefaultAsync(m => m.ID == id);
+            var collection = await _context.Collections.AsNoTracking().FirstOrDefaultAsync(m => m.ID == id);
 
             if (collection == null)
             {
@@ -38,6 +42,11 @@ namespace FaulknerCountyMuseumGallery.Pages.Collections
             else 
             {
                 Collection = collection;
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = String.Format("Delete {ID} failed. Try again", id);
             }
             return Page();
         }
@@ -50,14 +59,24 @@ namespace FaulknerCountyMuseumGallery.Pages.Collections
             }
             var collection = await _context.Collections.FindAsync(id);
 
-            if (collection != null)
+            if (collection == null)
             {
-                Collection = collection;
-                _context.Collections.Remove(Collection);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
 
-            return RedirectToPage("./Index");
+            try
+            {
+                _context.Collections.Remove(collection);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError(ex, ErrorMessage);
+
+                return RedirectToAction("./Delete",
+                                    new { id, saveChangesError = true});
+            }
         }
     }
 }
