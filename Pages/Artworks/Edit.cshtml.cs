@@ -71,8 +71,11 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
                 s => s.MediumID,
                 s => s.CollectionID,
                 s => s.Title,
+                s => s.AccessionNumber,
                 s => s.ImageLink,
-                s => s.Size))
+                s => s.Size,
+                s => s.Status,
+                s => s.Donor))
             {
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");

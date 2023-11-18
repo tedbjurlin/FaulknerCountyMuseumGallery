@@ -32,12 +32,6 @@
                 </a>
             </th>
             <th>
-                Image URL
-            </th>
-            <th>
-                Size
-            </th>
-            <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.MediumSort"
                     asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.ArtworkData.Artworks.First().Medium)
@@ -63,12 +57,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageLink)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Size)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Medium.Description)

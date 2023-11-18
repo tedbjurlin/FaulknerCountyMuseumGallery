@@ -24,6 +24,11 @@
                 <span asp-validation-for="Artwork.Title" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Artwork.AccessionNumber" class="control-label"></label>
+                <input asp-for="Artwork.AccessionNumber" class="form-control" />
+                <span asp-validation-for="Artwork.AccessionNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Artwork.ImageLink" class="control-label"></label>
                 <input asp-for="Artwork.ImageLink" class="form-control" />
                 <span asp-validation-for="Artwork.ImageLink" class="text-danger"></span>
@@ -32,6 +37,16 @@
                 <label asp-for="Artwork.Size" class="control-label"></label>
                 <input asp-for="Artwork.Size" class="form-control" />
                 <span asp-validation-for="Artwork.Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artwork.Status" class="control-label"></label>
+                <input asp-for="Artwork.Status" class="form-control" />
+                <span asp-validation-for="Artwork.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Artwork.Donor" class="control-label"></label>
+                <input asp-for="Artwork.Donor" class="form-control" />
+                <span asp-validation-for="Artwork.Donor" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Artwork.Artist" class="control-label"></label>
