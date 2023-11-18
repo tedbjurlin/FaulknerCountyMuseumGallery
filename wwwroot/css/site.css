@@ -30,6 +30,17 @@ body {
   margin-top: 12px;
 }
 
+.instaL_img:hover {
+  animation: wiggle 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes wiggle {
+  0% {transform: translate(0px, 0px) rotate(0deg);}
+  25% {transform: translate(0px, 0px) rotate(10deg);}
+  75% {transform: translate(0px, 0px) rotate(-10deg);}
+  100% {transform: translate(0px, 0px) rotate(0deg);}
+}
 
 .faceL_img {
   width: 50px;
@@ -39,6 +50,12 @@ body {
   margin-right: 6px;
   margin-top: 12px;
 }
+
+.faceL_img:hover {
+  animation: wiggle 3s;
+  animation-iteration-count: infinite;
+}
+
 
 #title {
   font-size: 25px;
