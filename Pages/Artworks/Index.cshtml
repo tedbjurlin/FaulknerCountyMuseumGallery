@@ -32,12 +32,6 @@
                 </a>
             </th>
             <th>
-                Image URL
-            </th>
-            <th>
-                Size
-            </th>
-            <th>
                 <a asp-page="./Index" asp-route-sortOrder="@Model.MediumSort"
                     asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.ArtworkData.Artworks.First().Medium)
@@ -47,6 +41,12 @@
                 <a asp-page="./Index" asp-route-sortOrder="@Model.ArtistSort"
                     asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.ArtworkData.Artworks.First().Artist)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.CollectionSort"
+                    asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.ArtworkData.Artworks.First().Collection)
                 </a>
             </th>
             <th></th>
@@ -59,16 +59,13 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImageLink)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Size)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Medium.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Artist.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Collection.Name)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ArtworkID">Edit</a> |
