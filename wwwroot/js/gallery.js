@@ -1,6 +1,6 @@
 
 
-
+/*
 const handelImageLoad = () => {
     gallery.classList.remove('is-loading');
     image.removeEventListener('load',handelImageLoad)
@@ -23,5 +23,5 @@ else {
     }
 }
 
-
+*/
 
