@@ -1,5 +1,6 @@
 using FaulknerCountyMuseumGallery.Data;
 using FaulknerCountyMuseumGallery.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using System.Linq;
 
 namespace FaulknerCountyMuseumGallery.Pages.Courses
 {
+    [Authorize]
     public class ArtistMediumPageModel : PageModel
     {
         public SelectList ArtistNameSL { get; set; }

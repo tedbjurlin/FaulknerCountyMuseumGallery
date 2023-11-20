@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using FaulknerCountyMuseumGallery.Data;
 using FaulknerCountyMuseumGallery.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FaulknerCountyMuseumGallery.Pages.Mediums
 {
+    [Authorize]
     public class CreateModel : PageModel
     {
         private readonly FaulknerCountyMuseumGallery.Data.GalleryContext _context;
