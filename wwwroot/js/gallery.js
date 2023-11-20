@@ -13,7 +13,7 @@ const imagel = image;
 if(!image.complete) {
     for(var i = 0; i < image.length; i++) {
         image[i].addEventListener('load', handelImageLoad);
-        image[i].replaceWith(loader);
+        image[i].outerHTML = loader;
     }
 }
 else {
