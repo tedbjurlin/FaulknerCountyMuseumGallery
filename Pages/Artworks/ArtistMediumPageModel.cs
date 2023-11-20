@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace FaulknerCountyMuseumGallery.Pages.Courses
 {
-    [Authroize]
+    [Authorize]
     public class ArtistMediumCollectionPageModel : PageModel
     {
         public SelectList ArtistNameSL { get; set; }
