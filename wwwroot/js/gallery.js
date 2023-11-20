@@ -19,7 +19,7 @@ if(!image.complete) {
 else {
     for(var i = 0; i < image.length; i++) { 
         image[i].removeEventListener('load', handelImageLoad);
-        image[i].outerHTML = imagel[i];
+        image[i].replaceWith(imagel[i]);
     }
 }
 
