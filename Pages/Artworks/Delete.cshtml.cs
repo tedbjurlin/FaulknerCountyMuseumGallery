@@ -35,6 +35,7 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
                 .AsNoTracking()
                 .Include(a => a.Artist)
                 .Include(a => a.Medium)
+                .Include(a => a.Collection)
                 .FirstOrDefaultAsync(m => m.ArtworkID == id);
 
             if (artwork == null)

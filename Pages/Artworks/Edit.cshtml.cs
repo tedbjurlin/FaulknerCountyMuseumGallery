@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace FaulknerCountyMuseumGallery.Pages.Artworks
 {
     [Authorize]
-    public class EditModel : ArtistMediumPageModel
+    public class EditModel : ArtistMediumCollectionPageModel
     {
         private readonly FaulknerCountyMuseumGallery.Data.GalleryContext _context;
 
@@ -35,7 +35,9 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
 
             var artwork =  await _context.Artworks
                 .Include(a => a.Artist)
-                .Include(a => a.Medium).FirstOrDefaultAsync(m => m.ArtworkID == id);
+                .Include(a => a.Medium)
+                .Include(a => a.Collection)
+                .FirstOrDefaultAsync(m => m.ArtworkID == id);
             if (artwork == null)
             {
                 return NotFound();
@@ -43,6 +45,7 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
             Artwork = artwork;
             PopulateArtistsDropDownList(_context, Artwork.ArtistID);
             PopulateMediumsDropDownList(_context, Artwork.MediumID);
+            PopulateCollectionsDropDownList(_context, Artwork.CollectionID);
             return Page();
         }
 
@@ -68,9 +71,13 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
                 s => s.ArtworkID,
                 s => s.ArtistID,
                 s => s.MediumID,
+                s => s.CollectionID,
                 s => s.Title,
+                s => s.AccessionNumber,
                 s => s.ImageLink,
-                s => s.Size))
+                s => s.Size,
+                s => s.Status,
+                s => s.Donor))
             {
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");

@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace FaulknerCountyMuseumGallery.Pages.Artworks
 {
     [Authorize]
-    public class CreateModel : ArtistMediumPageModel
+    public class CreateModel : ArtistMediumCollectionPageModel
     {
         private readonly FaulknerCountyMuseumGallery.Data.GalleryContext _context;
 
@@ -26,6 +26,7 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
         {
             PopulateArtistsDropDownList(_context);
             PopulateMediumsDropDownList(_context);
+            PopulateCollectionsDropDownList(_context);
             return Page();
         }
 
@@ -44,9 +45,13 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
                 s => s.ArtworkID,
                 s => s.ArtistID,
                 s => s.MediumID,
+                s => s.CollectionID,
                 s => s.Title,
+                s => s.AccessionNumber,
                 s => s.ImageLink,
-                s => s.Size))
+                s => s.Size,
+                s => s.Status,
+                s => s.Donor))
             {
                 _context.Artworks.Add(emptyArtwork);
                 await _context.SaveChangesAsync();
@@ -55,6 +60,7 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
         
             PopulateArtistsDropDownList(_context, emptyArtwork.ArtistID);
             PopulateMediumsDropDownList(_context, emptyArtwork.MediumID);
+            PopulateCollectionsDropDownList(_context, emptyArtwork.CollectionID);
             return Page();
 
         }

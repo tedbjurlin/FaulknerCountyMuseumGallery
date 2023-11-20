@@ -39,8 +39,18 @@ namespace FaulknerCountyMuseumGallery.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("AccessionNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("ArtistID")
                         .HasColumnType("INTEGER");
+
+                    b.Property<int>("CollectionID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Donor")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ImageLink")
                         .IsRequired()
@@ -53,6 +63,9 @@ namespace FaulknerCountyMuseumGallery.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Status")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -61,9 +74,26 @@ namespace FaulknerCountyMuseumGallery.Migrations
 
                     b.HasIndex("ArtistID");
 
+                    b.HasIndex("CollectionID");
+
                     b.HasIndex("MediumID");
 
                     b.ToTable("Artwork", (string)null);
+                });
+
+            modelBuilder.Entity("FaulknerCountyMuseumGallery.Models.Collection", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Collection", (string)null);
                 });
 
             modelBuilder.Entity("FaulknerCountyMuseumGallery.Models.Medium", b =>
@@ -285,6 +315,12 @@ namespace FaulknerCountyMuseumGallery.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("FaulknerCountyMuseumGallery.Models.Collection", "Collection")
+                        .WithMany()
+                        .HasForeignKey("CollectionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("FaulknerCountyMuseumGallery.Models.Medium", "Medium")
                         .WithMany("Artworks")
                         .HasForeignKey("MediumID")
@@ -292,6 +328,8 @@ namespace FaulknerCountyMuseumGallery.Migrations
                         .IsRequired();
 
                     b.Navigation("Artist");
+
+                    b.Navigation("Collection");
 
                     b.Navigation("Medium");
                 });

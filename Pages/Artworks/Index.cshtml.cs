@@ -28,6 +28,7 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
         public string TitleSort { get; set; }
         public string ArtistSort { get; set; }
         public string MediumSort { get; set; }
+        public string CollectionSort { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
@@ -40,6 +41,7 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
             TitleSort = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             ArtistSort = sortOrder == "Artist" ? "artist_desc" : "Artist";
             MediumSort = sortOrder == "Medium" ? "medium_desc" : "Medium";
+            CollectionSort = sortOrder == "Collection" ? "collection_desc" : "Collection";
 
             if (searchString != null)
             {
@@ -77,6 +79,12 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
                 case "medium_desc":
                     artworksIQ = artworksIQ.OrderByDescending(a => a.Medium.Description);
                     break;
+                case "Collection":
+                    artworksIQ = artworksIQ.OrderBy(a => a.Collection.Name);
+                    break;
+                case "collection_desc":
+                    artworksIQ = artworksIQ.OrderByDescending(a => a.Collection.Name);
+                    break;
                 default:
                     artworksIQ = artworksIQ.OrderBy(a => a.Title);
                     break;
@@ -89,7 +97,8 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
                 artworksIQ
                 .AsNoTracking()
                 .Include(i => i.Artist)
-                .Include(i => i.Medium), pageIndex ?? 1, pageSize);
+                .Include(i => i.Medium)
+                .Include(i => i.Collection), pageIndex ?? 1, pageSize);
             
             if (id != null)
             {
@@ -98,6 +107,7 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
                     .Where(i => i.ArtworkID == id.Value).Single();
                 ArtworkData.Artist = artwork.Artist;
                 ArtworkData.Medium = artwork.Medium;
+                ArtworkData.Collection = artwork.Collection;
             }
         }
     }

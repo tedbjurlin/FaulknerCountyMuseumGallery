@@ -7,11 +7,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using FaulknerCountyMuseumGallery.Data;
 using FaulknerCountyMuseumGallery.Models;
-using Microsoft.AspNetCore.Authorization;
 
-namespace FaulknerCountyMuseumGallery.Pages.Artworks
+namespace FaulknerCountyMuseumGallery.Pages.Collections
 {
-    [Authorize]
     public class DetailsModel : PageModel
     {
         private readonly FaulknerCountyMuseumGallery.Data.GalleryContext _context;
@@ -21,28 +19,23 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
             _context = context;
         }
 
-      public Artwork Artwork { get; set; }
+      public Collection Collection { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Artworks == null)
+            if (id == null || _context.Collections == null)
             {
                 return NotFound();
             }
 
-            var artwork = await _context.Artworks
-                .AsNoTracking()
-                .Include(a => a.Artist)
-                .Include(a => a.Medium)
-                .Include(a => a.Collection)
-                .FirstOrDefaultAsync(m => m.ArtworkID == id);
-            if (artwork == null)
+            var collection = await _context.Collections.FirstOrDefaultAsync(m => m.ID == id);
+            if (collection == null)
             {
                 return NotFound();
             }
             else 
             {
-                Artwork = artwork;
+                Collection = collection;
             }
             return Page();
         }

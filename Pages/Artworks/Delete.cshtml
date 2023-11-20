@@ -19,6 +19,12 @@
             @Html.DisplayFor(model => model.Artwork.Title)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Artwork.AccessionNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Artwork.AccessionNumber)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Artwork.ImageLink)
         </dt>
         <dd class="col-sm-10">
@@ -31,6 +37,18 @@
             @Html.DisplayFor(model => model.Artwork.Size)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Artwork.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Artwork.Status)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Artwork.Donor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Artwork.Donor)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Artwork.Medium)
         </dt>
         <dd class="col-sm-10">
@@ -41,6 +59,12 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Artwork.Artist.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Artwork.Collection)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Artwork.Collection.Name)
         </dd>
     </dl>
     
