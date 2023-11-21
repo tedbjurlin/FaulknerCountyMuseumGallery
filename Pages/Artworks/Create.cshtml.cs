@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using FaulknerCountyMuseumGallery.Data;
 using FaulknerCountyMuseumGallery.Models;
 using FaulknerCountyMuseumGallery.Pages.Courses;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FaulknerCountyMuseumGallery.Pages.Artworks
 {
+    [Authorize]
     public class CreateModel : ArtistMediumCollectionPageModel
     {
         private readonly FaulknerCountyMuseumGallery.Data.GalleryContext _context;
