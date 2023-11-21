@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using FaulknerCountyMuseumGallery.Data;
 using FaulknerCountyMuseumGallery.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FaulknerCountyMuseumGallery.Pages.Artists
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly GalleryContext _context;

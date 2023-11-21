@@ -22,6 +22,7 @@
 div.gallery {
   border: 1px solid #ccc;
   background-color: white;
+  animation: fade 1s;
 }
 
 div.gallery:hover {
@@ -99,12 +100,13 @@ div.desc {
       <div class="responsive">
       <div class="gallery" >
           <a target="_self" asp-page="./GalleryDetails" asp-route-id="@item.ArtworkID">
-          <img src="@Html.DisplayFor(modelItem => item.ImageLink)" alt="@Html.DisplayFor(modelItem => item.Title)" width="600" height="400">
+          <img class="gallery_image" src="@Html.DisplayFor(modelItem => item.ImageLink)" alt="@Html.DisplayFor(modelItem => item.Title)" width="600" height="400">
           </a>
           <div class="desc">@Html.DisplayFor(modelItem => item.Title)</div>
       </div>
       </div>
       }
+      <script src="js/gallery.js">
   </section>
 </div>
 

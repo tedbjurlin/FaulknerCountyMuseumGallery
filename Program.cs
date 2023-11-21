@@ -1,12 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using FaulknerCountyMuseumGallery.Data;
+using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<GalleryContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("GalleryContextSQLite") ?? throw new InvalidOperationException("Connection string 'GalleryContextSQLite' not found.")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<GalleryContext>();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

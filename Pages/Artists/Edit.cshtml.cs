@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FaulknerCountyMuseumGallery.Data;
 using FaulknerCountyMuseumGallery.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FaulknerCountyMuseumGallery.Pages.Artists
 {
+    [Authorize]
     public class EditModel : PageModel
     {
         private readonly FaulknerCountyMuseumGallery.Data.GalleryContext _context;
