@@ -17,12 +17,14 @@ namespace FaulknerCountyMuseumGallery.Data
         public DbSet<Medium> Mediums { get; set; }
         public DbSet<Artwork> Artworks { get; set; }
         public DbSet<Artist> Artists { get; set; }
+        public DbSet<Collection> Collections { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Medium>().ToTable("Medium");
             modelBuilder.Entity<Artwork>().ToTable("Artwork");
             modelBuilder.Entity<Artist>().ToTable("Artist");
+            modelBuilder.Entity<Collection>().ToTable("Collection");
         }
     }
 }

@@ -5,14 +5,14 @@
     ViewData["Title"] = "Artworks";
 }
 
-<h1>Digital Gallery</h1>
+<div id="title">Digital Gallery</div>
 
 <form asp-page="./Gallery" method="get">
-    <div class="form-actions no-color">
+    <div>
         <p>
             Search by title, medium, or artist:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <input type="submit" value="Search" id="searchb" />
             <a asp-page="./Gallery">Back to full List</a>
         </p>
     </div>
@@ -21,6 +21,7 @@
 <style>
 div.gallery {
   border: 1px solid #ccc;
+  background-color: white;
 }
 
 div.gallery:hover {
@@ -91,19 +92,21 @@ div.desc {
 }
 </style>
 
-<section id="photos">
+<div class="b">
+  <section id="photos">
 
-@foreach (var item in Model.ArtworkData.Artworks) {
-    <div class="responsive">
-    <div class="gallery">
-        <a target="_self" asp-page="./GalleryDetails" asp-route-id="@item.ArtworkID">
-        <img src="@Html.DisplayFor(modelItem => item.ImageLink)" alt="@Html.DisplayFor(modelItem => item.Title)" width="600" height="400">
-        </a>
-        <div class="desc">@Html.DisplayFor(modelItem => item.Title)</div>
-    </div>
-    </div>
-    }
-</section>
+  @foreach (var item in Model.ArtworkData.Artworks) {
+      <div class="responsive">
+      <div class="gallery" >
+          <a target="_self" asp-page="./GalleryDetails" asp-route-id="@item.ArtworkID">
+          <img src="@Html.DisplayFor(modelItem => item.ImageLink)" alt="@Html.DisplayFor(modelItem => item.Title)" width="600" height="400">
+          </a>
+          <div class="desc">@Html.DisplayFor(modelItem => item.Title)</div>
+      </div>
+      </div>
+      }
+  </section>
+</div>
 
 @{
     var prevDisabled = !Model.ArtworkData.Artworks.HasPreviousPage ? "disabled" : "";
@@ -114,13 +117,13 @@ div.desc {
    asp-route-sortOrder="@Model.CurrentSort"
    asp-route-pageIndex="@(Model.ArtworkData.Artworks.PageIndex - 1)"
    asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-primary @prevDisabled">
+   class="btn btn-primary @prevDisabled" id="searchb">
     Previous
 </a>
 <a asp-page="./Index"
    asp-route-sortOrder="@Model.CurrentSort"
    asp-route-pageIndex="@(Model.ArtworkData.Artworks.PageIndex + 1)"
    asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-primary @nextDisabled">
+   class="btn btn-primary @nextDisabled" id="searchb">
     Next
 </a>
