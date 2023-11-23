@@ -1,10 +1,53 @@
 @page
+@model FaulknerCountyMuseumGallery.Pages.AdminModel
 
 @{
     ViewData["Title"] = "Admin Directory";
+    string ArtworkString;
+    string ArtistString;
+    string MediumString;
+    string CollectionString;
+    if (Model.Artworks.Count() == 1)
+    {
+        ArtworkString = "work";
+    }
+    else
+    {
+        ArtworkString = "works";
+    }
+    if (Model.Mediums.Count() == 1)
+    {
+        MediumString = "medium";
+    }
+    else
+    {
+        MediumString = "mediums";
+    }
+    if (Model.Artists.Count() == 1)
+    {
+        ArtistString = "artist";
+    }
+    else
+    {
+        ArtistString = "artists";
+    }
+    if (Model.Collections.Count() == 1)
+    {
+        CollectionString = "collection";
+    }
+    else
+    {
+        CollectionString = "collections";
+    }
 }
 
 <h2>Admin Directory</h2>
+
+<p>
+    Welcome to the Admin index. We have @(Model.Artworks.Count()) @(ArtworkString) of art
+    in @(Model.Mediums.Count()) @(MediumString) in our gallery, created by @(Model.Artists.Count()) @(ArtistString) and organized into
+    @(Model.Collections.Count()) @(CollectionString).
+</p>
 
 <div>
     <a asp-page="./Artworks/Index">
