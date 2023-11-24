@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -29,13 +35,45 @@
                         <li class="nav_item">
                             <a class="nav-link text-dark" href="https://my-site-104396.square.site"><div id="titleb">Donate</div></a>
                         </li>
-                        <li class="nav_item">
+                        @* <li class="nav_item">
                             <a class="nav-link text-dark" asp-page="/Admin"><div id="titleb">Admin</div></a>
-                        </li>
+                        </li> *@
                     </ul>
                     <partial name="_LoginPartial" />
                 @* </div> *@
             </div>
+            <div class="account">
+                @* <a asp-page="/Admin"><div>Admin</div></a> *@
+                <ul class="navbar-nav">
+                @if (SignInManager.IsSignedIn(User))
+            {
+                <li class="nav-item">
+                            <a class= "green-link" asp-page="/Admin">Admin</a>
+                        </li>
+                <li class="nav-item">
+                    <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                </li>
+                <li class="nav-item">
+                    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
+                        <button class= "green-link" id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
+                    </form>
+                </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                            <a class= "green-link" asp-page="/Admin">Admin</a>
+                        </li>
+                <li class="nav-item">
+                    <a class= "green-link" class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class= "green-link" class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                </li>
+            }
+            </ul>
+
+                </div>
         @* </nav> *@
     </header>
     <div class="container">
