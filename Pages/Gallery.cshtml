@@ -1,11 +1,12 @@
 @page "{id:int?}"
 @model GalleryModel
 
+
 @{
     ViewData["Title"] = "Artworks";
 }
 
-<div id="title">Digital Gallery</div>
+<div id="title" style="text-align: left; margin-left: 20px;">Digital Gallery</div>
 
 <form asp-page="./Gallery" method="get">
     <div>
@@ -13,7 +14,7 @@
             Search by title, medium, or artist:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
             <input type="submit" value="Search" id="searchb" />
-            <a asp-page="./Gallery">Back to full List</a>
+            <a class="green-link" asp-page="./Gallery">Back to full List</a>
         </p>
     </div>
 </form>
@@ -106,7 +107,7 @@ div.desc {
       </div>
       </div>
       }
-      <script src="js/gallery.js">
+      @* <script src="js/gallery.js"> *@
   </section>
 </div>
 
