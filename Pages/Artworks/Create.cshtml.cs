@@ -22,18 +22,93 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
             _context = context;
         }
 
-        public IActionResult OnGet()
+        [BindProperty]
+        public Artwork Artwork { get; set; }
+        public string Title { get; set; }
+        public string AccessionNumber { get; set; }
+        public string ImageURL { get; set; }
+        public string Size { get; set; }
+        public string Status { get; set; }
+        public string Donor { get; set; }
+
+        public IActionResult OnGet(int? artistID, int? collectionID, int? mediumID,
+            string title = "", string accessionNumber = "", string imageURL = "",
+            string size = "", string status = "", string donor = "")
         {
-            PopulateArtistsDropDownList(_context);
-            PopulateMediumsDropDownList(_context);
-            PopulateCollectionsDropDownList(_context);
+            Title = title;
+            AccessionNumber = accessionNumber;
+            ImageURL = imageURL;
+            Size = size;
+            Status = status;
+            Donor = donor;
+            PopulateArtistsDropDownList(_context, artistID);
+            PopulateMediumsDropDownList(_context, mediumID);
+            PopulateCollectionsDropDownList(_context, collectionID);
             return Page();
         }
 
-        [BindProperty]
-        public Artwork Artwork { get; set; }
-        
+        public IActionResult OnPostCreateArtistAsync()
+        {
+            if (HttpContext.Request.Form != null)
+            {
+                var title = HttpContext.Request.Form["title"];
+                var accessionNumber = HttpContext.Request.Form["accessionNumber"];
+                var imageURL = HttpContext.Request.Form["imageURL"];
+                var status = HttpContext.Request.Form["status"];
+                var donor = HttpContext.Request.Form["donor"];
+                var size = HttpContext.Request.Form["size"];
 
+                return RedirectToPage("/Artists/Create", new { prevPage = Request.Path, title,
+                accessionNumber, imageURL, status, donor, size});
+            }
+            else
+            {
+                return Page();
+            }
+
+        }
+
+        public IActionResult OnPostCreateMediumAsync()
+        {
+            if (HttpContext.Request.Form != null)
+            {
+                var title = HttpContext.Request.Form["title"];
+                var accessionNumber = HttpContext.Request.Form["accessionNumber"];
+                var imageURL = HttpContext.Request.Form["imageURL"];
+                var status = HttpContext.Request.Form["status"];
+                var donor = HttpContext.Request.Form["donor"];
+                var size = HttpContext.Request.Form["size"];
+
+                return RedirectToPage("/Mediums/Create", new { prevPage = Request.Path, title,
+                accessionNumber, imageURL, status, donor, size});
+            }
+            else
+            {
+                return Page();
+            }
+
+        }
+
+        public IActionResult OnPostCreateCollectionAsync()
+        {
+            if (HttpContext.Request.Form != null)
+            {
+                var title = HttpContext.Request.Form["title"];
+                var accessionNumber = HttpContext.Request.Form["accessionNumber"];
+                var imageURL = HttpContext.Request.Form["imageURL"];
+                var status = HttpContext.Request.Form["status"];
+                var donor = HttpContext.Request.Form["donor"];
+                var size = HttpContext.Request.Form["size"];
+
+                return RedirectToPage("/Collections/Create", new { prevPage = Request.Path, title,
+                accessionNumber, imageURL, status, donor, size});
+            }
+            else
+            {
+                return Page();
+            }
+
+        }
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
