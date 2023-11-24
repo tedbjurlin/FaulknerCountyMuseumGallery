@@ -1,28 +1,86 @@
 @page
+@model FaulknerCountyMuseumGallery.Pages.AdminModel
 
 @{
     ViewData["Title"] = "Admin Directory";
+    string ArtworkString;
+    string ArtistString;
+    string MediumString;
+    string CollectionString;
+    if (Model.Artworks.Count() == 1)
+    {
+        ArtworkString = "work";
+    }
+    else
+    {
+        ArtworkString = "works";
+    }
+    if (Model.Mediums.Count() == 1)
+    {
+        MediumString = "medium";
+    }
+    else
+    {
+        MediumString = "mediums";
+    }
+    if (Model.Artists.Count() == 1)
+    {
+        ArtistString = "artist";
+    }
+    else
+    {
+        ArtistString = "artists";
+    }
+    if (Model.Collections.Count() == 1)
+    {
+        CollectionString = "collection";
+    }
+    else
+    {
+        CollectionString = "collections";
+    }
 }
 
-<h2>Admin Directory</h2>
-
-<div>
-    <a asp-page="./Artworks/Index">
-        Artworks Index
-    </a>
+<div class="container p-2">
+    <div class="center b">
+        <h5>
+            Welcome to the Admin Directory. We have @(Model.Artworks.Count()) @(ArtworkString) of art
+            in @(Model.Mediums.Count()) @(MediumString) in our gallery, created by @(Model.Artists.Count()) @(ArtistString) and organized into
+            @(Model.Collections.Count()) @(CollectionString).
+        </h5>
+    </div>
 </div>
-<div>
-    <a asp-page="./Artists/Index">
-        Artists Index
-    </a>
-</div>
-<div>
-    <a asp-page="./Mediums/Index">
-        Mediums Index
-    </a>
-</div>
-<div>
-    <a asp-page="./Collections/Index">
-        Collections Index
-    </a>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 p-2">
+            <div class="center b">
+                <a asp-page="./Artworks/Index">
+                    <h3>Artworks Index</h3>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-6 p-2">
+            <div class="center b">
+                <a asp-page="./Artists/Index">
+                    <h3>Artists Index</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 p-2">
+            <div class="center b">
+                <a asp-page="./Mediums/Index">
+                    <h3>Mediums Index</h3>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-6 p-2">
+            <div class="center b">
+                <a asp-page="./Collections/Index">
+                    <h3>Collections Index</h3>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
