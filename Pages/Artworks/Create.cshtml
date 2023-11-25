@@ -15,23 +15,23 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Artwork.Title" class="control-label"></label>
-                <input asp-for="Artwork.Title" class="form-control" name="title" value=@(Model.Title)/>
+                <input asp-for="Artwork.Title" class="form-control" value=@(Model.Title)/>
                 <span asp-validation-for="Artwork.Title" class="text-danger"></span>
             </div>
              <div class="form-group">
                 <label asp-for="Artwork.AccessionNumber" class="control-label"></label>
-                <input asp-for="Artwork.AccessionNumber" class="form-control" name="accessionNumber" value=@(Model.AccessionNumber)/>
+                <input asp-for="Artwork.AccessionNumber" class="form-control" value=@(Model.AccessionNumber)/>
                 <span asp-validation-for="Artwork.AccessionNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Artwork.ImageLink" class="control-label"></label>
-                <input asp-for="Artwork.ImageLink" class="form-control" name="imageURL" value=@(Model.ImageURL)/>
+                <input asp-for="Artwork.ImageLink" class="form-control" value=@(Model.ImageURL)/>
                 <span asp-validation-for="Artwork.ImageLink" class="text-danger"></span>
             </div>
             
             <div class="form-group">
                 <label asp-for="Artwork.Size" class="control-label"></label>
-                <input asp-for="Artwork.Size" class="form-control" name="size" value=@(Model.Size)/>
+                <input asp-for="Artwork.Size" class="form-control" value=@(Model.Size)/>
                 <span asp-validation-for="Artwork.Size" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -45,12 +45,12 @@
             <button asp-page-handler="CreateMedium" formnovalidate>Create New Medium</button>
             <div class="form-group">
                 <label asp-for="Artwork.Status" class="control-label"></label>
-                <input asp-for="Artwork.Status" class="form-control" name="status" value=@(Model.Status)/>
+                <input asp-for="Artwork.Status" class="form-control" value=@(Model.Status)/>
                 <span asp-validation-for="Artwork.Status" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Artwork.Donor" class="control-label"></label>
-                <input asp-for="Artwork.Donor" class="form-control" name="donor" value=@(Model.Donor)/>
+                <input asp-for="Artwork.Donor" class="form-control" value=@(Model.Donor)/>
                 <span asp-validation-for="Artwork.Donor" class="text-danger"></span>
             </div>
             <div class="form-group">

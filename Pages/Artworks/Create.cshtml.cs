@@ -51,15 +51,17 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
         {
             if (HttpContext.Request.Form != null)
             {
-                var title = HttpContext.Request.Form["title"];
-                var accessionNumber = HttpContext.Request.Form["accessionNumber"];
-                var imageURL = HttpContext.Request.Form["imageURL"];
-                var status = HttpContext.Request.Form["status"];
-                var donor = HttpContext.Request.Form["donor"];
-                var size = HttpContext.Request.Form["size"];
+                var title = HttpContext.Request.Form["Artwork.Title"];
+                var accessionNumber = HttpContext.Request.Form["Artwork.AccessionNumber"];
+                var imageURL = HttpContext.Request.Form["Artwork.ImageLink"];
+                var status = HttpContext.Request.Form["Artwork.Status"];
+                var donor = HttpContext.Request.Form["Artwork.Donor"];
+                var size = HttpContext.Request.Form["Artwork.Size"];
+                var mediumID = HttpContext.Request.Form["Artwork.MediumID"];
+                var collectionID = HttpContext.Request.Form["Artwork.CollectionID"];
 
                 return RedirectToPage("/Artists/Create", new { prevPage = Request.Path, title,
-                accessionNumber, imageURL, status, donor, size});
+                accessionNumber, imageURL, status, donor, size, mediumID, collectionID });
             }
             else
             {
@@ -72,15 +74,17 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
         {
             if (HttpContext.Request.Form != null)
             {
-                var title = HttpContext.Request.Form["title"];
-                var accessionNumber = HttpContext.Request.Form["accessionNumber"];
-                var imageURL = HttpContext.Request.Form["imageURL"];
-                var status = HttpContext.Request.Form["status"];
-                var donor = HttpContext.Request.Form["donor"];
-                var size = HttpContext.Request.Form["size"];
+                var title = HttpContext.Request.Form["Artwork.Title"];
+                var accessionNumber = HttpContext.Request.Form["Artwork.AccessionNumber"];
+                var imageURL = HttpContext.Request.Form["Artwork.ImageLink"];
+                var status = HttpContext.Request.Form["Artwork.Status"];
+                var donor = HttpContext.Request.Form["Artwork.Donor"];
+                var size = HttpContext.Request.Form["Artwork.Size"];
+                var artistID = HttpContext.Request.Form["Artwork.ArtistID"];
+                var collectionID = HttpContext.Request.Form["Artwork.CollectionID"];
 
                 return RedirectToPage("/Mediums/Create", new { prevPage = Request.Path, title,
-                accessionNumber, imageURL, status, donor, size});
+                accessionNumber, imageURL, status, donor, size, artistID, collectionID});
             }
             else
             {
@@ -93,15 +97,17 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
         {
             if (HttpContext.Request.Form != null)
             {
-                var title = HttpContext.Request.Form["title"];
-                var accessionNumber = HttpContext.Request.Form["accessionNumber"];
-                var imageURL = HttpContext.Request.Form["imageURL"];
-                var status = HttpContext.Request.Form["status"];
-                var donor = HttpContext.Request.Form["donor"];
-                var size = HttpContext.Request.Form["size"];
+                var title = HttpContext.Request.Form["Artwork.Title"];
+                var accessionNumber = HttpContext.Request.Form["Artwork.AccessionNumber"];
+                var imageURL = HttpContext.Request.Form["Artwork.ImageLink"];
+                var status = HttpContext.Request.Form["Artwork.Status"];
+                var donor = HttpContext.Request.Form["Artwork.Donor"];
+                var size = HttpContext.Request.Form["Artwork.Size"];
+                var artistID = HttpContext.Request.Form["Artwork.ArtistID"];
+                var mediumID = HttpContext.Request.Form["Artwork.MediumID"];
 
                 return RedirectToPage("/Collections/Create", new { prevPage = Request.Path, title,
-                accessionNumber, imageURL, status, donor, size});
+                accessionNumber, imageURL, status, donor, size, mediumID, artistID });
             }
             else
             {
