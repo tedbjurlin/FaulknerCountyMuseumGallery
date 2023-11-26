@@ -102,6 +102,7 @@ body {
 .nav_item {
   display: inline-block;
   width: 300px;
+  margin: 0 auto;
 }
 
 
@@ -151,8 +152,10 @@ header {
 .nav_menu {
   border-style: solid;
   border-color: black;
+  align-items: center;
   background-color: #83cd64;
-  width: 1100px;
+  text-align: center;
+  width: 1300px;
   float: left;
 }
 
