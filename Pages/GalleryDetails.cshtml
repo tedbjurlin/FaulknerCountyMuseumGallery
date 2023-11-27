@@ -1,10 +1,8 @@
 @page
 @model GalleryDetailsModel
-
 @{
     ViewData["Title"] = "GalleryDetails";
 }
-
 <style>
 img {
   max-width: 100%;
@@ -46,11 +44,11 @@ img {
 
      @if ((!string.IsNullOrEmpty(@Model.Artwork.Donor)) && (!string.IsNullOrEmpty(@Model.Artwork.Status)))
         {
-         <p class="moreinfo">"@Html.DisplayFor(model => model.Artwork.Title)" was graciously donated by @Html.DisplayFor(model => model.Artwork.Donor) and is currently @Html.DisplayFor(model => model.Artwork.Status).</p>
+         <p class="moreinfo">"@Html.DisplayFor(model => model.Artwork.Title)" was donated by @Html.DisplayFor(model => model.Artwork.Donor) and is currently @Html.DisplayFor(model => model.Artwork.Status).</p>
         } 
     else if(!string.IsNullOrEmpty(@Model.Artwork.Donor))
         {
-        <p class="moreinfo">"@Html.DisplayFor(model => model.Artwork.Title)" was graciously donated by @Html.DisplayFor(model => model.Artwork.Donor).</p>
+        <p class="moreinfo">"@Html.DisplayFor(model => model.Artwork.Title)" was donated by @Html.DisplayFor(model => model.Artwork.Donor).</p>
         }
     else if(!string.IsNullOrEmpty(@Model.Artwork.Status))
         {
@@ -58,5 +56,5 @@ img {
         }
 </div>
 <div>
-    <a  class="nav-link text-dark" target="_parent" asp-page="./Gallery"><div id="titleb">Back to Gallery</div></a>
+    <a target="_parent" asp-page="./Gallery">Back to Gallery</a>
 </div>
