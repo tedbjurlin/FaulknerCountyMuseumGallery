@@ -102,6 +102,7 @@ body {
 .nav_item {
   display: inline-block;
   width: 300px;
+  margin: 0 auto;
 }
 
 
@@ -151,7 +152,11 @@ header {
 .nav_menu {
   border-style: solid;
   border-color: black;
+  align-items: center;
   background-color: #83cd64;
+  text-align: center;
+  width: 1296px;
+  float: left;
 }
 
 
@@ -196,3 +201,60 @@ header {
   height: 7px;
   transform: translate(1px,-3px);
 }
+
+
+#registerSubmit  {
+    font-size: 25px;
+    font-family: 'Carlito', sans-serif;
+    font-style: black;
+    text-align: center;
+    background-color: #72bb53;
+    padding: 5px;
+    border-style: solid;
+    border-color: black;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  
+  
+  #registerSubmit:hover {
+    background-color: #6baf4e;
+  }
+  
+
+
+  #login-submit  {
+    font-size: 25px;
+    font-family: 'Carlito', sans-serif;
+    font-style: black;
+    text-align: center;
+    background-color: #72bb53;
+    padding: 5px;
+    border-style: solid;
+    border-color: black;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  
+  
+  #login-submit:hover {
+    background-color: #6baf4e;
+  }
+  
+
+  .green-link {
+    color: #6baf4e;
+  }
+
+  .account {
+    border-style: solid;
+    border-color: black;
+    padding: 10px;
+    background-color: #f8f7f3;
+    text-align: center;
+    /* margin-left: 10px; */
+    float: right;
+    height: 187.5px;
+    width: 196px;
+    border-left-color: #f8f7f3;
+  }
