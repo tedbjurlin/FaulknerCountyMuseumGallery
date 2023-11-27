@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 @inject SignInManager<IdentityUser> SignInManager
@@ -33,6 +39,9 @@
                         <li class="nav_item">
                             <a class="nav-link text-dark" href="https://my-site-104396.square.site"><div id="titleb">Donate</div></a>
                         </li>
+                        @* <li class="nav_item">
+                            <a class="nav-link text-dark" asp-page="/Admin"><div id="titleb">Admin</div></a>
+                        </li> *@
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="nav_item">

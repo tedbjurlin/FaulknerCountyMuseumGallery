@@ -3,6 +3,7 @@
 @{ViewData["Title"] = "About Us";
 }
 
+<div id="title" style="text-align: left; margin-left: 20px;">About</div>
 <style>
     .about-container {
         text-align: center;
@@ -37,8 +38,11 @@
         margin-bottom: 5px;
     }
     .contact, .hours {
+        height: 240px;
+        width: 600px;
         text-align: center;
-        width: 48%;
+        @* width: 48%; *@
+        margin: 20px;
     }
     .info-title {
         text-align: center;
@@ -51,7 +55,7 @@
 
 </style>
 
-<div class="about-container">
+<div class="about-container" style="float: left;">
     <img src="\Director_Image.jpg" alt="Director Image" class="director-image"/>
     <div class="about-text">
         <div id="title">Meet the Director</div>
@@ -63,10 +67,10 @@
     </div>
 </div>
 
-<div class="info-boxes">
+<div class="info-boxes" style="float: left;" >
     <div class="contact">
         <div id="title">Contact Us</div>
-            <div class="b" style="height: 240px;">
+            <div class="b">
             <p>Faulkner County Museum</p>
             <p>801 Locust Street/Courthouse Square</p>
             <p>P.O. Box 2442</p>
@@ -77,7 +81,7 @@
     </div>
     <div class="hours">
         <div id="title">Hours</div>
-        <div class="b" style="height: 240px;">
+        <div class="b">
         <p>Monday: 9am - 4pm</p>
         <p>Tuesday: 9am - 4pm</p>
         <p>Wednesday: 9am - 4pm</p>
