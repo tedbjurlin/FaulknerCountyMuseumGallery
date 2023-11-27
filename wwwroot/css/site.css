@@ -92,11 +92,23 @@ body {
   border-style: solid;
   border-color: black;
   margin-bottom: 10px;
+  transition: 1s;
 }
 
 
 #titleb:hover {
+  animation: color_shift 0.5s;
   background-color: #6baf4e;
+}
+
+
+@keyframes color_shift{
+  0% {
+    background-color: #72bb53;
+  }
+  100% {
+    background-color: #6baf4e;
+  }
 }
 
 .nav_item {
