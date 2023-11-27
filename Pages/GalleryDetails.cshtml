@@ -10,12 +10,29 @@ img {
   width: auto;
   height: auto;
 }
+.artist {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+.title {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+.info {
+    font-size: 1.5rem;
+}
+.moreinfo {
+    font-size: 1.25rem;
+    font-weight: lighter;
+}
+.identifier {
+    font-size: 3rem;
+    font-weight: bold;
+}
 </style>
 
-<div id="title" style="text-align: left; margin-left: 20px;">Artwork Details</div>
-
 <div class="b">
-    <h4>Artwork</h4>
+    <h4 class="identifier">@Html.DisplayFor(model => model.Artwork.Collection.Name) #@Html.DisplayFor(model => model.Artwork.AccessionNumber)</h4>
     <hr />
     <img src="@Html.DisplayFor(model => model.Artwork.ImageLink)" alt="@Html.DisplayFor(model => model.Artwork.Title)">
     <hr />
