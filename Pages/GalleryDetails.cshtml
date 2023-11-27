@@ -1,10 +1,8 @@
 @page
 @model GalleryDetailsModel
-
 @{
     ViewData["Title"] = "GalleryDetails";
 }
-
 <style>
 img {
   max-width: 100%;
@@ -12,42 +10,51 @@ img {
   width: auto;
   height: auto;
 }
+.artist {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+.title {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+.info {
+    font-size: 1.5rem;
+}
+.moreinfo {
+    font-size: 1.25rem;
+    font-weight: lighter;
+}
+.identifier {
+    font-size: 3rem;
+    font-weight: bold;
+}
 </style>
 
-<div id="title" style="text-align: left; margin-left: 20px;">Artwork Details</div>
-
 <div class="b">
-    <h4>Artwork</h4>
+    <h4 class="identifier">@Html.DisplayFor(model => model.Artwork.Collection.Name) #@Html.DisplayFor(model => model.Artwork.AccessionNumber)</h4>
     <hr />
     <img src="@Html.DisplayFor(model => model.Artwork.ImageLink)" alt="@Html.DisplayFor(model => model.Artwork.Title)">
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Artwork.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Artwork.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Artwork.Size)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Artwork.Size)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Artwork.Medium)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Artwork.Medium.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Artwork.Artist)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Artwork.Artist.Name)
-        </dd>
-    </dl>
+    <p class="artist">@Html.DisplayFor(model => model.Artwork.Artist.Name)</p>
+    <p class="title">@Html.DisplayFor(model => model.Artwork.Title)</p>
+    <p class="info">@Html.DisplayFor(model => model.Artwork.Medium.Description)</p>
+    <p class="info">@Html.DisplayFor(model => model.Artwork.Size)</p>
+
+
+     @if ((!string.IsNullOrEmpty(@Model.Artwork.Donor)) && (!string.IsNullOrEmpty(@Model.Artwork.Status)))
+        {
+         <p class="moreinfo">"@Html.DisplayFor(model => model.Artwork.Title)" was donated by @Html.DisplayFor(model => model.Artwork.Donor) and is currently @Html.DisplayFor(model => model.Artwork.Status).</p>
+        } 
+    else if(!string.IsNullOrEmpty(@Model.Artwork.Donor))
+        {
+        <p class="moreinfo">"@Html.DisplayFor(model => model.Artwork.Title)" was donated by @Html.DisplayFor(model => model.Artwork.Donor).</p>
+        }
+    else if(!string.IsNullOrEmpty(@Model.Artwork.Status))
+        {
+        <p class="moreinfo">"@Html.DisplayFor(model => model.Artwork.Title)" is currently @Html.DisplayFor(model => model.Artwork.Status).</p>
+        }
 </div>
 <div>
-    <a  class="nav-link text-dark" target="_parent" asp-page="./Gallery"><div id="titleb">Back to Gallery</div></a>
+    <a target="_parent" asp-page="./Gallery">Back to Gallery</a>
 </div>
