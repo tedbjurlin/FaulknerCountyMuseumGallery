@@ -31,7 +31,9 @@ namespace FaulknerCountyMuseumGallery.Pages.Artists
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string? prevPage, int? collectionID,
+            int? mediumID, string title = "", string accessionNumber = "",
+            string imageURL = "", string size = "", string status = "", string donor = "")
         {
             var emptyArtist = new Artist();
 
@@ -42,7 +44,16 @@ namespace FaulknerCountyMuseumGallery.Pages.Artists
             {
                 _context.Artists.Add(emptyArtist);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+                if (prevPage != null)
+                {
+                    return RedirectToPage(prevPage, new {title,
+                    accessionNumber, imageURL, size, mediumID, status, 
+                    artistID = emptyArtist.ID, donor, collectionID});
+                }
+                else
+                {
+                    return RedirectToPage("./Index");
+                }
             }
 
             return Page();

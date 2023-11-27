@@ -13,23 +13,23 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Artwork.Title" class="control-label"></label>
-                <input asp-for="Artwork.Title" class="form-control" />
+                <input asp-for="Artwork.Title" class="form-control" value=@(Model.Title)/>
                 <span asp-validation-for="Artwork.Title" class="text-danger"></span>
             </div>
              <div class="form-group">
                 <label asp-for="Artwork.AccessionNumber" class="control-label"></label>
-                <input asp-for="Artwork.AccessionNumber" class="form-control" />
+                <input asp-for="Artwork.AccessionNumber" class="form-control" value=@(Model.AccessionNumber)/>
                 <span asp-validation-for="Artwork.AccessionNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Artwork.ImageLink" class="control-label"></label>
-                <input asp-for="Artwork.ImageLink" class="form-control" />
+                <input asp-for="Artwork.ImageLink" class="form-control" value=@(Model.ImageURL)/>
                 <span asp-validation-for="Artwork.ImageLink" class="text-danger"></span>
             </div>
             
             <div class="form-group">
                 <label asp-for="Artwork.Size" class="control-label"></label>
-                <input asp-for="Artwork.Size" class="form-control" />
+                <input asp-for="Artwork.Size" class="form-control" value=@(Model.Size)/>
                 <span asp-validation-for="Artwork.Size" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -40,14 +40,15 @@
                 </select>
                 <span asp-validation-for="Artwork.MediumID" class="text-danger" />
             </div>
+            <button asp-page-handler="CreateMedium" formnovalidate>Create New Medium</button>
             <div class="form-group">
                 <label asp-for="Artwork.Status" class="control-label"></label>
-                <input asp-for="Artwork.Status" class="form-control" />
+                <input asp-for="Artwork.Status" class="form-control" value=@(Model.Status)/>
                 <span asp-validation-for="Artwork.Status" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Artwork.Donor" class="control-label"></label>
-                <input asp-for="Artwork.Donor" class="form-control" />
+                <input asp-for="Artwork.Donor" class="form-control" value=@(Model.Donor)/>
                 <span asp-validation-for="Artwork.Donor" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -58,6 +59,7 @@
                 </select>
                 <span asp-validation-for="Artwork.ArtistID" class="text-danger" />
             </div>
+            <button asp-page-handler="CreateArtist" formnovalidate>Create New Artist</button>
             <div class="form-group">
                 <label asp-for="Artwork.CollectionID" class="control-label"></label>
                 <select asp-for="Artwork.CollectionID" class="form-control"
@@ -66,6 +68,7 @@
                 </select>
                 <span asp-validation-for="Artwork.CollectionID" class="text-danger" />
             </div>
+            <button asp-page-handler="CreateCollection" formnovalidate>Create New Collection</button>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
