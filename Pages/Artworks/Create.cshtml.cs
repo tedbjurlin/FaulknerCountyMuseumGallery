@@ -22,18 +22,99 @@ namespace FaulknerCountyMuseumGallery.Pages.Artworks
             _context = context;
         }
 
-        public IActionResult OnGet()
+        [BindProperty]
+        public Artwork Artwork { get; set; }
+        public string Title { get; set; }
+        public string AccessionNumber { get; set; }
+        public string ImageURL { get; set; }
+        public string Size { get; set; }
+        public string Status { get; set; }
+        public string Donor { get; set; }
+
+        public IActionResult OnGet(int? artistID, int? collectionID, int? mediumID,
+            string title = "", string accessionNumber = "", string imageURL = "",
+            string size = "", string status = "", string donor = "")
         {
-            PopulateArtistsDropDownList(_context);
-            PopulateMediumsDropDownList(_context);
-            PopulateCollectionsDropDownList(_context);
+            Title = title;
+            AccessionNumber = accessionNumber;
+            ImageURL = imageURL;
+            Size = size;
+            Status = status;
+            Donor = donor;
+            PopulateArtistsDropDownList(_context, artistID);
+            PopulateMediumsDropDownList(_context, mediumID);
+            PopulateCollectionsDropDownList(_context, collectionID);
             return Page();
         }
 
-        [BindProperty]
-        public Artwork Artwork { get; set; }
-        
+        public IActionResult OnPostCreateArtistAsync()
+        {
+            if (HttpContext.Request.Form != null)
+            {
+                var title = HttpContext.Request.Form["Artwork.Title"];
+                var accessionNumber = HttpContext.Request.Form["Artwork.AccessionNumber"];
+                var imageURL = HttpContext.Request.Form["Artwork.ImageLink"];
+                var status = HttpContext.Request.Form["Artwork.Status"];
+                var donor = HttpContext.Request.Form["Artwork.Donor"];
+                var size = HttpContext.Request.Form["Artwork.Size"];
+                var mediumID = HttpContext.Request.Form["Artwork.MediumID"];
+                var collectionID = HttpContext.Request.Form["Artwork.CollectionID"];
 
+                return RedirectToPage("/Artists/Create", new { prevPage = Request.Path, title,
+                accessionNumber, imageURL, status, donor, size, mediumID, collectionID });
+            }
+            else
+            {
+                return Page();
+            }
+
+        }
+
+        public IActionResult OnPostCreateMediumAsync()
+        {
+            if (HttpContext.Request.Form != null)
+            {
+                var title = HttpContext.Request.Form["Artwork.Title"];
+                var accessionNumber = HttpContext.Request.Form["Artwork.AccessionNumber"];
+                var imageURL = HttpContext.Request.Form["Artwork.ImageLink"];
+                var status = HttpContext.Request.Form["Artwork.Status"];
+                var donor = HttpContext.Request.Form["Artwork.Donor"];
+                var size = HttpContext.Request.Form["Artwork.Size"];
+                var artistID = HttpContext.Request.Form["Artwork.ArtistID"];
+                var collectionID = HttpContext.Request.Form["Artwork.CollectionID"];
+
+                return RedirectToPage("/Mediums/Create", new { prevPage = Request.Path, title,
+                accessionNumber, imageURL, status, donor, size, artistID, collectionID});
+            }
+            else
+            {
+                return Page();
+            }
+
+        }
+
+        public IActionResult OnPostCreateCollectionAsync()
+        {
+            if (HttpContext.Request.Form != null)
+            {
+                var title = HttpContext.Request.Form["Artwork.Title"];
+                var accessionNumber = HttpContext.Request.Form["Artwork.AccessionNumber"];
+                var imageURL = HttpContext.Request.Form["Artwork.ImageLink"];
+                var status = HttpContext.Request.Form["Artwork.Status"];
+                var donor = HttpContext.Request.Form["Artwork.Donor"];
+                var size = HttpContext.Request.Form["Artwork.Size"];
+                var artistID = HttpContext.Request.Form["Artwork.ArtistID"];
+                var mediumID = HttpContext.Request.Form["Artwork.MediumID"];
+
+                return RedirectToPage("/Collections/Create", new { prevPage = Request.Path, title,
+                accessionNumber, imageURL, status, donor, size, mediumID, artistID });
+            }
+            else
+            {
+                return Page();
+            }
+
+        }
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
