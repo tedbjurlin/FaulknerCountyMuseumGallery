@@ -97,16 +97,21 @@ div.desc {
 <div class="b">
   <section id="photos">
 
-  @foreach (var item in Model.ArtworkData.Artworks) {
-      <div class="responsive">
-      <div class="gallery" >
-          <a target="_self" asp-page="./GalleryDetails" asp-route-id="@item.ArtworkID">
-          <img class="gallery_image" src="@Html.DisplayFor(modelItem => item.ImageLink)" alt="@Html.DisplayFor(modelItem => item.Title)" width="600" height="400">
-          </a>
-          <div class="desc">@Html.DisplayFor(modelItem => item.Title)</div>
-      </div>
-      </div>
-      }
+  @if ( Model.ArtworkData.Artworks.Count != 0) {
+      @foreach (var item in Model.ArtworkData.Artworks) {
+          <div class="responsive">
+          <div class="gallery" >
+              <a target="_self" asp-page="./GalleryDetails" asp-route-id="@item.ArtworkID">
+              <img class="gallery_image" src="@Html.DisplayFor(modelItem => item.ImageLink)" alt="@Html.DisplayFor(modelItem => item.Title)" width="600" height="400">
+              </a>
+              <div class="desc">@Html.DisplayFor(modelItem => item.Title)</div>
+          </div>
+          </div>
+          }
+  }
+  else {
+    <div>No artworks</div>
+  }
       @* <script src="js/gallery.js"> *@
   </section>
 </div>
