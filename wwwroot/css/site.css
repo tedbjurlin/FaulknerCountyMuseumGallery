@@ -270,3 +270,16 @@ header {
     width: 196px;
     border-left-color: #f8f7f3;
   }
+
+  #page_title {
+    font-size: 25px;
+    font-family: 'Carlito', sans-serif;
+    font-style: black;
+    text-align: center;
+    background-color: #72bb53;
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
