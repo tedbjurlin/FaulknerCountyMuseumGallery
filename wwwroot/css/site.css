@@ -28,18 +28,11 @@ body {
   padding: 10px;
   margin-right: 6px;
   margin-top: 12px;
+  transition: transform 0.85s;
 }
 
 .instaL_img:hover {
-  animation: wiggle 3s;
-  animation-iteration-count: infinite;
-}
-
-@keyframes wiggle {
-  0% {transform: translate(0px, 0px) rotate(0deg);}
-  25% {transform: translate(0px, 0px) rotate(10deg);}
-  75% {transform: translate(0px, 0px) rotate(-10deg);}
-  100% {transform: translate(0px, 0px) rotate(0deg);}
+  transform: rotate(360deg);
 }
 
 .faceL_img {
@@ -49,11 +42,11 @@ body {
   padding: 10px;
   margin-right: 6px;
   margin-top: 12px;
+  transition: transform 0.5s;
 }
 
 .faceL_img:hover {
-  animation: wiggle 3s;
-  animation-iteration-count: infinite;
+    transform: rotate(360deg);
 }
 
 
