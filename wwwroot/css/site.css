@@ -21,34 +21,6 @@ body {
   margin-bottom: 100px;
 }
 
-.instaL_img {
-  width: 50px;
-  height: auto;
-  float: right;
-  padding: 10px;
-  margin-right: 6px;
-  margin-top: 12px;
-  transition: transform 0.85s;
-}
-
-.instaL_img:hover {
-  transform: rotate(360deg);
-}
-
-.faceL_img {
-  width: 50px;
-  height: auto;
-  float: right;
-  padding: 10px;
-  margin-right: 6px;
-  margin-top: 12px;
-  transition: transform 0.5s;
-}
-
-.faceL_img:hover {
-    transform: rotate(360deg);
-}
-
 
 #title {
   font-size: 25px;
@@ -60,18 +32,6 @@ body {
   border-style: solid;
   border-color: black;
   margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-#stitle {
-  font-size: 28.5px;
-  font-family: 'Carlito', sans-serif;
-  font-style: black;
-  text-align: center;
-  background-color: #72bb53;
-  padding: 10px;
-  border-style: solid;
-  border-color: black;
   margin-bottom: 10px;
 }
 
@@ -103,18 +63,6 @@ body {
     background-color: #6baf4e;
   }
 }
-
-.nav_item {
-  display: inline-block;
-  width: 300px;
-  margin: 0 auto;
-}
-
-
-header {
-  margin-bottom: 10px;
-}
-
 
 .search {
   border-style: solid;
@@ -155,17 +103,6 @@ header {
 }
 
 
-
-.nav_menu {
-  border-style: solid;
-  border-color: black;
-  align-items: center;
-  align-self: center;
-  background-color: #83cd64;
-  text-align: center;
-  width: 1296px;
-  float: left;
-}
 
 
 @keyframes fade {
@@ -252,19 +189,6 @@ header {
 
   .green-link {
     color: #6baf4e;
-  }
-
-  .account {
-    border-style: solid;
-    border-color: black;
-    padding: 10px;
-    background-color: #f8f7f3;
-    text-align: center;
-    /* margin-left: 10px; */
-    float: right;
-    height: 187.5px;
-    width: 196px;
-    border-left-color: #f8f7f3;
   }
 
   #page_title {
