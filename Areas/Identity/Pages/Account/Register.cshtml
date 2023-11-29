@@ -5,7 +5,7 @@
 }
 
 <h1>@ViewData["Title"]</h1> *@
-<div id="title" style="text-align: left; margin-left: 20px;">Register</div>
+<div id="title" style="text-align: center;">Register</div>
 <div class="row">
     <div class="col-md-4">
         <form class="b" id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
@@ -27,7 +27,7 @@
                 <label asp-for="Input.ConfirmPassword">Confirm Password</label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <button id="registerSubmit" type="submit" style="padding-left: 100px; padding-right: 100px;">Register</button>
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
