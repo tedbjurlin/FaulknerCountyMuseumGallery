@@ -7,44 +7,44 @@
 
 <div  id="page_title">Artworks</div>
 
-<p>
+@* <p>
     <a asp-page="Create">Create New</a>
-</p>
+</p> *@
 
-<form asp-page="./Index" method="get">
+<form asp-page="./Index" method="get" class="b" style="float: left; width: 100%; margin-bottom: 10px;">
     <div class="form-actions no-color">
-        <p>
+        <p style="margin-top: 10px; margin-bottom: 10px;">
             Find by title, medium, or artist:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to full List</a>
+            <input type="submit" value="Search" class="searchb" /> |
+            <a class="green-link" asp-page="./Index">Back to full List</a>
         </p>
     </div>
 </form>
 
-<table class="table">
+<table class="table b">
     <thead>
-        <tr>
+        <tr class="top">
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort"
+                <a class="column_name" asp-page="./Index" asp-route-sortOrder="@Model.TitleSort"
                     asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.ArtworkData.Artworks.First().Title)
                 </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.MediumSort"
+                <a class="column_name" asp-page="./Index" asp-route-sortOrder="@Model.MediumSort"
                     asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.ArtworkData.Artworks.First().Medium)
                 </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.ArtistSort"
+                <a  class="column_name"  asp-page="./Index" asp-route-sortOrder="@Model.ArtistSort"
                     asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.ArtworkData.Artworks.First().Artist)
                 </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@Model.CollectionSort"
+                <a class="column_name" asp-page="./Index" asp-route-sortOrder="@Model.CollectionSort"
                     asp-route-currentFilter="@Model.CurrentFilter">
                     @Html.DisplayNameFor(model => model.ArtworkData.Artworks.First().Collection)
                 </a>
@@ -68,14 +68,15 @@
                 @Html.DisplayFor(modelItem => item.Collection.Name)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ArtworkID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ArtworkID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ArtworkID">Delete</a>
+                <a class="green-link" asp-page="./Edit" asp-route-id="@item.ArtworkID">Edit</a> |
+                <a class="green-link" asp-page="./Details" asp-route-id="@item.ArtworkID">Details</a> |
+                <a class="green-link" asp-page="./Delete" asp-route-id="@item.ArtworkID">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<a class="add_button" asp-page="Create">+</a>
 
 @{
     var prevDisabled = !Model.ArtworkData.Artworks.HasPreviousPage ? "disabled" : "";
@@ -86,13 +87,13 @@
    asp-route-sortOrder="@Model.CurrentSort"
    asp-route-pageIndex="@(Model.ArtworkData.Artworks.PageIndex - 1)"
    asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-primary @prevDisabled">
+   class="searchb @prevDisabled">
     Previous
 </a>
 <a asp-page="./Index"
    asp-route-sortOrder="@Model.CurrentSort"
    asp-route-pageIndex="@(Model.ArtworkData.Artworks.PageIndex + 1)"
    asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-primary @nextDisabled">
+   class="searchb @nextDisabled">
     Next
 </a>

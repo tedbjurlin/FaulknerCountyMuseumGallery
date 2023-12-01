@@ -13,7 +13,7 @@
         <p>
             Search by title, medium, or artist:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Search" id="searchb" />
+            <input type="submit" value="Search" class="searchb" />
             <a class="green-link" asp-page="./Gallery">Back to full List</a>
         </p>
     </div>
@@ -126,13 +126,13 @@ div.desc {
    asp-route-sortOrder="@Model.CurrentSort"
    asp-route-pageIndex="@(Model.ArtworkData.Artworks.PageIndex - 1)"
    asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-primary @prevDisabled" id="searchb">
+   class="searchb @prevDisabled">
     Previous
 </a>
 <a asp-page="./Index"
    asp-route-sortOrder="@Model.CurrentSort"
    asp-route-pageIndex="@(Model.ArtworkData.Artworks.PageIndex + 1)"
    asp-route-currentFilter="@Model.CurrentFilter"
-   class="btn btn-primary @nextDisabled" id="searchb">
+   class="searchb @nextDisabled">
     Next
 </a>
