@@ -7,7 +7,7 @@
 
 <div id="page_title">Create Artwork</div>
 <hr />
-<div class="row">
+<div class="row create">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -40,7 +40,8 @@
                 </select>
                 <span asp-validation-for="Artwork.MediumID" class="text-danger" />
             </div>
-            <button asp-page-handler="CreateMedium" formnovalidate>Create New Medium</button>
+            @* <button asp-page-handler="CreateMedium" formnovalidate>Create New Medium</button> *@
+            <button class="s_add_button"  asp-page-handler="CreateMedium" formnovalidate>+</button>
             <div class="form-group">
                 <label asp-for="Artwork.Status" class="control-label"></label>
                 <input asp-for="Artwork.Status" class="form-control" value=@(Model.Status)/>
@@ -59,7 +60,8 @@
                 </select>
                 <span asp-validation-for="Artwork.ArtistID" class="text-danger" />
             </div>
-            <button asp-page-handler="CreateArtist" formnovalidate>Create New Artist</button>
+            @* <button asp-page-handler="CreateArtist" formnovalidate>Create New Artist</button> *@
+            <button class="s_add_button" asp-page-handler="CreateArtist" formnovalidate>+</button>
             <div class="form-group">
                 <label asp-for="Artwork.CollectionID" class="control-label"></label>
                 <select asp-for="Artwork.CollectionID" class="form-control"
@@ -68,9 +70,10 @@
                 </select>
                 <span asp-validation-for="Artwork.CollectionID" class="text-danger" />
             </div>
-            <button asp-page-handler="CreateCollection" formnovalidate>Create New Collection</button>
+            @* <button asp-page-handler="CreateCollection" formnovalidate>Create New Collection</button> *@
+            <button class="s_add_button" asp-page-handler="CreateCollection" formnovalidate>+</button>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="searchb" />
             </div>
         </form>
     </div>
