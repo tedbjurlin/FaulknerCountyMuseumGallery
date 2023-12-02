@@ -21,34 +21,6 @@ body {
   margin-bottom: 100px;
 }
 
-.instaL_img {
-  width: 50px;
-  height: auto;
-  float: right;
-  padding: 10px;
-  margin-right: 6px;
-  margin-top: 12px;
-  transition: transform 0.85s;
-}
-
-.instaL_img:hover {
-  transform: rotate(360deg);
-}
-
-.faceL_img {
-  width: 50px;
-  height: auto;
-  float: right;
-  padding: 10px;
-  margin-right: 6px;
-  margin-top: 12px;
-  transition: transform 0.5s;
-}
-
-.faceL_img:hover {
-    transform: rotate(360deg);
-}
-
 
 #title {
   font-size: 25px;
@@ -60,18 +32,6 @@ body {
   border-style: solid;
   border-color: black;
   margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-#stitle {
-  font-size: 25px;
-  font-family: 'Carlito', sans-serif;
-  font-style: black;
-  text-align: center;
-  background-color: #72bb53;
-  padding: 10px;
-  border-style: solid;
-  border-color: black;
   margin-bottom: 10px;
 }
 
@@ -104,19 +64,6 @@ body {
   }
 }
 
-.nav_item {
-  display: inline-block;
-  width: 300px;
-  margin: 0 auto;
-}
-
-
-header {
-  margin-bottom: 10px;
-  position: sticky;
-}
-
-
 .search {
   border-style: solid;
   border-color: black;
@@ -125,21 +72,23 @@ header {
   margin: auto;
 }
 
-#searchb {
-  font-size: 25px;
+.searchb {
+  font-size: 20px;
   font-family: 'Carlito', sans-serif;
-  font-style: black;
+  color: black;
   text-align: center;
   background-color: #72bb53;
-  padding: 5px;
+  /* padding: 5px; */
+  margin: 10px;
   border-style: solid;
   border-color: black;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  text-decoration: none;
+  transition: 1s;
 }
 
 
-#searchb:hover {
+.searchb:hover {
+  animation: color_shift 0.5s;
   background-color: #6baf4e;
 }
 
@@ -150,21 +99,11 @@ header {
   padding: 10px;
   background-color: #f8f7f3;
   text-align: center;
+  margin-bottom: 10px;
 
 }
 
 
-
-.nav_menu {
-  border-style: solid;
-  border-color: black;
-  align-items: center;
-  align-self: center;
-  background-color: #83cd64;
-  text-align: center;
-  width: 1296px;
-  float: left;
-}
 
 
 @keyframes fade {
@@ -210,60 +149,14 @@ header {
 }
 
 
-#registerSubmit  {
-    font-size: 25px;
-    font-family: 'Carlito', sans-serif;
-    font-style: black;
-    text-align: center;
-    background-color: #72bb53;
-    padding: 5px;
-    border-style: solid;
-    border-color: black;
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
-  
-  
-  #registerSubmit:hover {
-    background-color: #6baf4e;
-  }
-  
-
-
-  #login-submit  {
-    font-size: 25px;
-    font-family: 'Carlito', sans-serif;
-    font-style: black;
-    text-align: center;
-    background-color: #72bb53;
-    padding: 5px;
-    border-style: solid;
-    border-color: black;
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
-  
-  
-  #login-submit:hover {
-    background-color: #6baf4e;
-  }
-  
 
   .green-link {
-    color: #6baf4e;
+    color: #72bb53;
+    transition: 1s;
   }
 
-  .account {
-    border-style: solid;
-    border-color: black;
-    padding: 10px;
-    background-color: #f8f7f3;
-    text-align: center;
-    /* margin-left: 10px; */
-    float: right;
-    height: 187.5px;
-    width: 196px;
-    border-left-color: #f8f7f3;
+  .green-link:hover {
+    color: #6baf4e;
   }
 
   #page_title {
