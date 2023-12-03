@@ -23,22 +23,16 @@ namespace FaulknerCountyMuseumGallery.Pages
             Configuration = configuration;
         }
 
-        public string TitleSort { get; set; }
-        public string ArtistSort { get; set; }
-        public string MediumSort { get; set; }
         public string CurrentFilter { get; set; }
-        public string CurrentSort { get; set; }
-
         public ArtworkIndexData ArtworkData { get; set; }
+        public List<Collection> collectionList {get; set; }
         public int ArtworkID { get; set; }
 
-        public async Task OnGetAsync(int? id, int? mediumID, string sortOrder,
-            string currentFilter, string searchString, int? pageIndex)
-        {
-            TitleSort = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
-            ArtistSort = sortOrder == "Artist" ? "artist_desc" : "Artist";
-            MediumSort = sortOrder == "Medium" ? "medium_desc" : "Medium";
 
+        public async Task OnGetAsync(int? id,
+            string currentFilter, string searchString, int collectionID, int? pageIndex)
+        {
+            collectionList = (from a in _context.Collections select a).ToList();
             if (searchString != null)
             {
                 pageIndex = 1;
@@ -57,17 +51,20 @@ namespace FaulknerCountyMuseumGallery.Pages
                                         || a.Artist.Name.ToUpper().Contains(searchString.ToUpper())
                                         || a.Medium.Description.ToUpper().Contains(searchString.ToUpper()));
             }
+            if (collectionID != 0)
+            {
+                artworksIQ = artworksIQ.Where(a => a.Collection.ID.Equals(collectionID));
+            }
 
             var pageSize = Configuration.GetValue("PageSize", 4);
-
-            
 
             ArtworkData = new ArtworkIndexData();
             ArtworkData.Artworks = await PaginatedList<Artwork>.CreateAsync(
                 artworksIQ
                 .AsNoTracking()
                 .Include(i => i.Artist)
-                .Include(i => i.Medium), pageIndex ?? 1, pageSize);
+                .Include(i => i.Medium)
+                .Include(i => i.Collection), pageIndex ?? 1, pageSize);
             
             if (id != null)
             {
@@ -76,6 +73,7 @@ namespace FaulknerCountyMuseumGallery.Pages
                     .Where(i => i.ArtworkID == id.Value).Single();
                 ArtworkData.Artist = artwork.Artist;
                 ArtworkData.Medium = artwork.Medium;
+                ArtworkData.Collection = artwork.Collection;
             }
         }
     }
