@@ -43,47 +43,50 @@
 
 <div  id="page_title">Admin Directory</div>
 
-<div>
-<div class="container p-2">
-    <div class="center b" style="float: left;">
-        <h5>
-            Welcome to the Admin Directory. We have @(Model.Artworks.Count()) @(ArtworkString) of art
-            in @(Model.Mediums.Count()) @(MediumString) in our gallery, created by @(Model.Artists.Count()) @(ArtistString) and organized into
-            @(Model.Collections.Count()) @(CollectionString).
-        </h5>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 p-2">
-            <div class="center b">
-                <a class="green-link" asp-page="./Artworks/Index">
-                    <h3>Artworks Index</h3>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-6 p-2">
-            <div class="center b">
-                <a class="green-link" asp-page="./Artists/Index">
-                    <h3>Artists Index</h3>
-                </a>
-            </div>
+<div class="b" style="float: left;">
+    <img src="~/Falkner_county_logo.png" style="width: 275px; animation: fade 3s;"/>
+    <div class="container p-2">
+        <div class="center" style="float: left;">
+            <h5>
+                Welcome to the Admin Directory. We have @(Model.Artworks.Count()) @(ArtworkString) of art
+                in @(Model.Mediums.Count()) @(MediumString) in our gallery, created by @(Model.Artists.Count()) @(ArtistString) and organized into
+                @(Model.Collections.Count()) @(CollectionString).
+            </h5>
+            <hr/ >
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6 p-2">
-            <div class="center b">
-                <a class="green-link" asp-page="./Mediums/Index">
-                    <h3>Mediums Index</h3>
-                </a>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 p-2">
+                <div class="center">
+                    <a class="green-link" asp-page="./Artworks/Index">
+                        <h3  id="titleb">Artworks Index</h3>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-6 p-2">
+                <div class="center">
+                    <a class="green-link" asp-page="./Artists/Index">
+                        <h3  id="titleb">Artists Index</h3>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="col-sm-6 p-2">
-            <div class="center b">
-                <a class="green-link" asp-page="./Collections/Index">
-                    <h3>Collections Index</h3>
-                </a>
+        <div class="row">
+            <div class="col-sm-6 p-2">
+                <div class="center">
+                    <a class="green-link" asp-page="./Mediums/Index">
+                        <h3  id="titleb">Mediums Index</h3>
+                    </a>
+                </div>
             </div>
-        </div>
+            <div class="col-sm-6 p-2">
+                <div class="center">
+                    <a class="green-link" asp-page="./Collections/Index">
+                        <h3  id="titleb">Collections Index</h3>
+                    </a>
+                </div>
+            </div>
+        <div>
     </div>
 </div>
