@@ -115,10 +115,8 @@ select {
   background-color: #f8f7f3;
   text-align: center;
   margin-bottom: 10px;
-<<<<<<< 361fb19449197c8ac3936f7de3afa66144e37532
+}
 
-<<<<<<< 361fb19449197c8ac3936f7de3afa66144e37532
-=======
 .bb {
   border-style: solid;
   border-color: black;
@@ -128,9 +126,7 @@ select {
   margin-bottom: 100px;
   width: 100%;
   float: left;
->>>>>>> fixed footer spacing on create pages
-=======
->>>>>>> more backend styling
+
 }
 
 
