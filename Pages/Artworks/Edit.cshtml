@@ -8,7 +8,7 @@
 <div  id="page_title">Edit Artwork</div>
 
 <hr />
-<div class="row">
+<div class="bb row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -65,15 +65,12 @@
                     asp-items="@Model.CollectionNameSL"></select>
                 <span asp-validation-for="Artwork.CollectionID" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group" style="margin-top: 30px;">
+                <input type="submit" value="save" class="searchb" />
+                <a class="searchb" asp-page="Index">Back to List</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
 </div>
 
 @section Scripts {
