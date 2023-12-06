@@ -26,6 +26,15 @@ select {
   padding: 0.5em;
 }
 
+nav {
+  background-color: #72bb53;
+  font-size: 25px;
+  font-family: 'Carlito', sans-serif;
+  color: black;
+  padding: 10px;
+  border-style: solid;
+  border-color: black;
+}
 
 #title {
   font-size: 25px;
@@ -43,13 +52,15 @@ select {
 #titleb {
   font-size: 25px;
   font-family: 'Carlito', sans-serif;
-  font-style: black;
   text-align: center;
   background-color: #72bb53;
   padding: 5px;
   border-style: solid;
   border-color: black;
+  text-decoration: none;
   margin-bottom: 10px;
+  color: black;
+  text-decoration: none;
   transition: 1s;
 }
 
@@ -83,7 +94,7 @@ select {
   color: black;
   text-align: center;
   background-color: #72bb53;
-  padding: 5px; 
+  padding: 2px;
   margin: 10px;
   border-style: solid;
   border-color: black;
@@ -112,16 +123,38 @@ select {
   padding: 10px;
   background-color: #f8f7f3;
   text-align: center;
+}
+
+.bb {
+  border-style: solid;
+  border-color: black;
+  padding: 10px;
+  background-color: #f8f7f3;
+  /* text-align: center; */
   margin-bottom: 10px;
+  width: 100%;
+  float: left;
 
 }
 
 
 
+.bb {
+  border-style: solid;
+  border-color: black;
+  padding: 10px;
+  background-color: #f8f7f3;
+  /* text-align: center; */
+  margin-bottom: 100px;
+  width: 100%;
+  float: left;
+}
+
+
 
 @keyframes fade {
   0% {
-      transform: translate(30px, 0px);
+      transform: translate(15px, 0px);
       opacity: 0;
   }
   100% {
@@ -169,7 +202,7 @@ select {
   }
 
   .green-link:hover {
-    color: #6baf4e;
+    color: #67a34b;
   }
 
   #page_title {
