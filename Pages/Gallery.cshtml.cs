@@ -65,7 +65,7 @@ namespace FaulknerCountyMuseumGallery.Pages
                 .Include(i => i.Artist)
                 .Include(i => i.Medium)
                 .Include(i => i.Collection), pageIndex ?? 1, pageSize);
-            
+            ArtworkData.Artworks = ArtworkData.Artworks.shuffle();
             if (id != null)
             {
                 ArtworkID = id.Value;
