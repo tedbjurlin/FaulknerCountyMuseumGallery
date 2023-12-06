@@ -53,9 +53,95 @@
   }
   
   
-  .nav_item {
-    display: inline-block;
-    width: 300px;
-    margin: 0 auto;
+  .circle {
+    width: 90px;
+    height: 40px;
+    border-radius: 100px;
+      background-color: #72bb53;
+      text-align: center;
+    /* animation: circle 1s; */
+    transition: rgb 1s;
+  }
+
+  .circle:hover {
+    /* background-image: radial-gradient(circle 40px, rgb(115, 187, 84, 0)rgb(115, 187, 84, 0)); */
+    animation: circle 0.5s;
+    background-image: radial-gradient(circle 40px, rgb(115, 187, 84, 1), rgb(132, 205, 101, 1));
+  }
+  .circle:not(:hover) {
+    /* background-image: radial-gradient(circle 40px, rgb(115, 187, 84, 0)rgb(115, 187, 84, 0)); */
+    animation: reverse_circle 0.5s;
+    /* background-image: radial-gradient(circle 40px, rgb(115, 187, 84, 1), rgb(132, 205, 101, 1)); */
   }
   
+@keyframes circle {
+  0% {
+    background-image: radial-gradient(circle 4px, rgb(115, 187, 84, 0), rgb(132, 205, 101, 0));
+  }
+  10% {
+    background-image: radial-gradient(circle 8px, rgb(115, 187, 84, 0.1), rgb(132, 205, 101, 0.1));
+  }
+  20% {
+    background-image: radial-gradient(circle 12px, rgb(115, 187, 84, 0.2), rgb(132, 205, 101, 0.2));
+  }
+  30% {
+    background-image: radial-gradient(circle 16px, rgb(115, 187, 84, 0.3), rgb(132, 205, 101, 0.3));
+  }
+  40% {
+    background-image: radial-gradient(circle 20px, rgb(115, 187, 84, 0.4), rgb(132, 205, 101, 0.4));
+  }
+  50% {
+    background-image: radial-gradient(circle 24px, rgb(115, 187, 84, 0.5), rgb(132, 205, 101, 0.5));
+  }
+  60% {
+    background-image: radial-gradient(circle 28px, rgb(115, 187, 84, 0.6), rgb(132, 205, 101, 0.6));
+  }
+  70% {
+    background-image: radial-gradient(circle 32px, rgb(115, 187, 84, 0.7), rgb(132, 205, 101, 0.7));
+  }
+  80% {
+    background-image: radial-gradient(circle 36px, rgb(115, 187, 84, 0.8), rgb(132, 205, 101, 0.8));
+  }
+  90% {
+    background-image: radial-gradient(circle 40px, rgb(115, 187, 84, 0.9), rgb(132, 205, 101, 0.9));
+  }
+  100% {
+    background-image: radial-gradient(circle 44px,rgb(115, 187, 84, 1), rgb(132, 205, 101, 1));
+  }
+}
+
+@keyframes reverse_circle {
+  0% {
+    background-image: radial-gradient(circle 4px, rgb(115, 187, 84, 1), rgb(132, 205, 101, 1));
+  }
+  10% {
+    background-image: radial-gradient(circle 8px, rgb(115, 187, 84, 0.9), rgb(132, 205, 101, 0.9));
+  }
+  20% {
+    background-image: radial-gradient(circle 12px, rgb(115, 187, 84, 0.8), rgb(132, 205, 101, 0.8));
+  }
+  30% {
+    background-image: radial-gradient(circle 16px, rgb(115, 187, 84, 0.7), rgb(132, 205, 101, 0.7));
+  }
+  40% {
+    background-image: radial-gradient(circle 20px, rgb(115, 187, 84, 0.6), rgb(132, 205, 101, 0.6));
+  }
+  50% {
+    background-image: radial-gradient(circle 24px, rgb(115, 187, 84, 0.5), rgb(132, 205, 101, 0.5));
+  }
+  60% {
+    background-image: radial-gradient(circle 28px, rgb(115, 187, 84, 0.4), rgb(132, 205, 101, 0.4));
+  }
+  70% {
+    background-image: radial-gradient(circle 32px, rgb(115, 187, 84, 0.3), rgb(132, 205, 101, 0.3));
+  }
+  80% {
+    background-image: radial-gradient(circle 36px, rgb(115, 187, 84, 0.2), rgb(132, 205, 101, 0.2));
+  }
+  90% {
+    background-image: radial-gradient(circle 40px, rgb(115, 187, 84, 0.1), rgb(132, 205, 101, 0.1));
+  }
+  100% {
+    background-image: radial-gradient(circle 44px,rgb(115, 187, 84, 0), rgb(132, 205, 101, 0));
+  }
+}
