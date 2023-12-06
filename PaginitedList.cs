@@ -10,18 +10,30 @@ namespace FaulknerCountyMuseumGallery
     {
         public int PageIndex { get; private set; }
         public int TotalPages { get; private set; }
+        private static Random rng;
 
         public PaginatedList(List<T> items, int count, int pageIndex, int pageSize)
         {
             PageIndex = pageIndex;
             TotalPages = (int)Math.Ceiling(count / (double)pageSize);
-
             this.AddRange(items);
+            rng = new Random();
         }
-
+        public PaginatedList(List<T> items, int pageIndex, int totalPages, Random rand)
+        {
+            PageIndex = pageIndex;
+            TotalPages = totalPages;
+            this.AddRange(items);
+            rng = rand;
+        }
+        public PaginatedList<T> shuffle() {
+            return new PaginatedList<T>(this.OrderBy(a => rng.Next()).ToList(), PageIndex, TotalPages, rng);
+        }
         public bool HasPreviousPage => PageIndex > 1;
 
         public bool HasNextPage => PageIndex < TotalPages;
+        public int getPageIndex() {return PageIndex;}
+        public int getTotalPages() {return TotalPages;}
 
         public static async Task<PaginatedList<T>> CreateAsync(
             IQueryable<T> source, int pageIndex, int pageSize)
