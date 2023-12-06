@@ -42,9 +42,6 @@
                         <li class="nav_item">
                             <a class="nav-link text-dark" href="https://my-site-104396.square.site"><div id="titleb">Donate</div></a>
                         </li>
-                        @* <li class="nav_item">
-                            <a class="nav-link text-dark" asp-page="/Admin"><div id="titleb">Admin</div></a>
-                        </li> *@
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="nav_item">
@@ -52,9 +49,7 @@
                             </li>
                         }
                     </ul>
-                @* </div> *@
             </div>
-        @* </nav> *@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
