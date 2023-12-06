@@ -26,6 +26,15 @@ select {
   padding: 0.5em;
 }
 
+nav {
+  background-color: #72bb53;
+  font-size: 25px;
+  font-family: 'Carlito', sans-serif;
+  color: black;
+  padding: 10px;
+  border-style: solid;
+  border-color: black;
+}
 
 #title {
   font-size: 25px;
@@ -114,7 +123,6 @@ select {
   padding: 10px;
   background-color: #f8f7f3;
   text-align: center;
-  margin-bottom: 10px;
 }
 
 .bb {
@@ -123,7 +131,7 @@ select {
   padding: 10px;
   background-color: #f8f7f3;
   /* text-align: center; */
-  margin-bottom: 100px;
+  margin-bottom: 10px;
   width: 100%;
   float: left;
 
@@ -137,7 +145,7 @@ select {
   padding: 10px;
   background-color: #f8f7f3;
   /* text-align: center; */
-  margin-bottom: 10px;
+  margin-bottom: 100px;
   width: 100%;
   float: left;
 }
