@@ -8,7 +8,7 @@
 <div  id="page_title">Collection Details</div>
 >
 
-<div>
+<div class="bb">
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -18,8 +18,9 @@
             @Html.DisplayFor(model => model.Collection.Name)
         </dd>
     </dl>
+    <div>
+    <a class="searchb" asp-page="./Edit" asp-route-id="@Model.Collection?.ID">Edit</a>
+    <a class="searchb" asp-page="./Index">Back to List</a>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Collection?.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
 </div>
+
