@@ -7,11 +7,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<GalleryContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("GalleryContextSQLite") ?? throw new InvalidOperationException("Connection string 'GalleryContextSQLite' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("GalleryContext") ?? throw new InvalidOperationException("Connection string 'GalleryContext' not found.")));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<GalleryContext>();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
+options.InstanceName = "SampleInstance";
+});
 
 var app = builder.Build();
 
