@@ -60,20 +60,9 @@
       background-color: #72bb53;
       text-align: center;
     /* animation: circle 1s; */
-    transition: rgb 1s;
+    /* transition: circle 1s; */
   }
 
-  .circle:hover {
-    /* background-image: radial-gradient(circle 40px, rgb(115, 187, 84, 0)rgb(115, 187, 84, 0)); */
-    animation: circle 0.5s;
-    background-image: radial-gradient(circle 40px, rgb(115, 187, 84, 1), rgb(132, 205, 101, 1));
-  }
-  .circle:not(:hover) {
-    /* background-image: radial-gradient(circle 40px, rgb(115, 187, 84, 0)rgb(115, 187, 84, 0)); */
-    animation: reverse_circle 0.5s;
-    /* background-image: radial-gradient(circle 40px, rgb(115, 187, 84, 1), rgb(132, 205, 101, 1)); */
-  }
-  
 @keyframes circle {
   0% {
     background-image: radial-gradient(circle 4px, rgb(115, 187, 84, 0), rgb(132, 205, 101, 0));
