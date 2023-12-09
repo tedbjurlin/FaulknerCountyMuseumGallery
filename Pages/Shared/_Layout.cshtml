@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@inject SignInManager<IdentityUser> SignInManager
+@inject SignINManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
 <head>
@@ -64,23 +64,21 @@
     </footer> *@
     <footer class="border-top footer text-muted">
         <div class="container">
-            <div class = "row">
+            <div class="row">
                 <div class="col-sm-4">
-                <div class = 'license'>
                     <p>The Faulkner County Museum is a nonprofit registered under 501(c)(3) #71-0726554.</p>
-                </div>
                 </div>
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    <div class="col-sm-4" style = 'text-align: center'>
-                        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" style='text-align: center;'>
-                            <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
-                        </form>
-                    </div>
+                <div class="col-sm-4">
+                    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index" new { area = "" })">
+                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
+                    </form>
+                </div>
                 }
                 else
                 {
-                    <div class="col-sm-4" style = 'text-align: center'>
+                    <div class="col-sm-4">
                         <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
                     </div>
                 }
@@ -98,6 +96,20 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
+
+    <script type="text/javascript">
+        $.ajax({
+                url: '/popover',
+                success: function (result) {
+                    $('#popoverLink').popover({
+                        content: result,
+                        trigger: 'click',
+                        html: true,
+                        animation: true
+                    })
+                }
+            });
+    </script>
 </body>
 </html>

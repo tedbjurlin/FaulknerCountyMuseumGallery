@@ -4,8 +4,9 @@
     width: 15%;
     height: auto;
     float: right;
-    padding: 10px;
+    padding: 2%;
     margin-right: 6px;
+    margin-top: 5%px;
     transition: transform 0.85s;
   }
   
@@ -17,8 +18,9 @@
     width: 15%;
     height: auto;
     float: right;
-    padding: 10px;
+    padding: 2%;
     margin-right: 6px;
+    margin-top: 5%;
     transition: transform 0.5s;
   }
   
@@ -53,7 +55,7 @@
   
   .nav_item {
     display: inline-block;
-    width: 33%;
+    width: 30%;
     margin: 0 auto;
   }
   

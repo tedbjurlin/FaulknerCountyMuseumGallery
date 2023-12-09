@@ -47,7 +47,7 @@ nav {
   border-color: black;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: 100%
+  width: 100%;
 }
 
 #titleb {
@@ -219,4 +219,13 @@ nav {
     margin-bottom: 10px;
     float: left;
     width: 100%;
+  }
+
+  #popoverLink {
+    color: #72bb53;
+    text-decoration-line: underline;
+  }
+
+  .popover{
+    max-width: 100%; 
   }
