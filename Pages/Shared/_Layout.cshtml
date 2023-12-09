@@ -98,6 +98,20 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/headfoot.js"></script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+   @RenderSection("Scripts", required: false)
+
+    <script type="text/javascript">
+        $.ajax({
+                url: '/popover',
+                success: function (result) {
+                    $('#popoverLink').popover({
+                        content: result,
+                        trigger: 'click',
+                        html: true,
+                        animation: true
+                    })
+                }
+            });
+    </script>
 </body>
 </html>

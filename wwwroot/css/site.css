@@ -238,3 +238,12 @@ nav {
     float: left;
     width: 1296px;
   }
+
+  #popoverLink {
+    color: #72bb53;
+    text-decoration-line: underline;
+  }
+
+  .popover{
+    max-width: 100%; 
+  }
