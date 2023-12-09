@@ -47,6 +47,7 @@ nav {
   border-color: black;
   margin-top: 10px;
   margin-bottom: 10px;
+  width: 100%
 }
 
 #titleb {
@@ -217,5 +218,5 @@ nav {
     margin-top: 10px;
     margin-bottom: 10px;
     float: left;
-    width: 1296px;
+    width: 100%;
   }

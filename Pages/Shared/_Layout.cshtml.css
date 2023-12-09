@@ -21,6 +21,7 @@ a {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+  font-display: center;
 }
 
 .border-top {
@@ -41,7 +42,6 @@ button.accept-policy {
 
 
 
-
 header {
   margin-bottom: 10px;
 }
@@ -49,9 +49,13 @@ header {
 
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
+  background-color:#fff;
+  z-index: 2;
+  font-family: 'Carlito', sans-serif;
+  font-size-adjust: inherit;
 }
