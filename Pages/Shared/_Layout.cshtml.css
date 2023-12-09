@@ -49,13 +49,20 @@ header {
 
 
 .footer {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+  white-space: normal;
+  line-height: auto;
   background-color:#fff;
   z-index: 2;
   font-family: 'Carlito', sans-serif;
-  font-size-adjust: inherit;
 }
+
+.license {
+  font-size: small;
+  text-align: center;
+  float: inline-start;
+}
+
+

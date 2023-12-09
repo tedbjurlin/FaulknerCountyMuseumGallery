@@ -1,12 +1,11 @@
 
 
 .instaL_img {
-    width: 50px;
+    width: 15%;
     height: auto;
     float: right;
     padding: 10px;
     margin-right: 6px;
-    margin-top: 12px;
     transition: transform 0.85s;
   }
   
@@ -15,12 +14,11 @@
   }
   
   .faceL_img {
-    width: 50px;
+    width: 15%;
     height: auto;
     float: right;
     padding: 10px;
     margin-right: 6px;
-    margin-top: 12px;
     transition: transform 0.5s;
   }
   
@@ -35,7 +33,7 @@
     align-self: center;
     background-color: #83cd64;
     text-align: center;
-    width: 1296px;
+    width: 100%;
     float: left;
   }
   
@@ -55,7 +53,7 @@
   
   .nav_item {
     display: inline-block;
-    width: 300px;
+    width: 33%;
     margin: 0 auto;
   }
   
