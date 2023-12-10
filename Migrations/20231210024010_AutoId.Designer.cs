@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FaulknerCountyMuseumGallery.Migrations
 {
     [DbContext(typeof(GalleryContext))]
-    [Migration("20231210021421_AutoId")]
+    [Migration("20231210024010_AutoId")]
     partial class AutoId
     {
         /// <inheritdoc />
