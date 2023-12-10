@@ -6,6 +6,8 @@ namespace FaulknerCountyMuseumGallery.Models
 
     public class Artist
     {
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Required]
         [StringLength(50, MinimumLength=2)]

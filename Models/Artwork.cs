@@ -1,9 +1,12 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FaulknerCountyMuseumGallery.Models
 {
     public class Artwork
     {
+        
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ArtworkID { get; set; }
         [Required]
         public string Title { get; set; }
