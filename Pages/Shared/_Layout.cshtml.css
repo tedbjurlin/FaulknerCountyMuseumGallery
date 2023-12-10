@@ -57,10 +57,13 @@ header {
   background-color:#fff;
   z-index: 2;
   font-family: 'Carlito', sans-serif;
+  padding-top: 2%;
+  margin-top: 2%;
+  
 }
 
 .license {
-  font-size: small;
+  font-size: 4%;
   text-align: center;
   float: inline-start;
 }
