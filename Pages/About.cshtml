@@ -8,26 +8,22 @@
     .about-container {
         text-align: center;
         display: flex;
-        align-items: flex-start;
     }
     .director-image {
-        width: 40%;
+        width: 100%;
         height: auto; 
         border-style: solid;
         border-color: black;
+        margin-bottom: 5%;
     }
     .about-text {
-        width: 60%; 
+        width: 100%; 
         padding-left: 2%; 
     }
     .about-text p {
         font-size: 14px;
         margin-top: 5px;
         margin-bottom: 5px;
-    }
-    .about-title {
-        font-size: 24px;
-        font-weight: bold;
     }
     .info-boxes {
         display: flex;
@@ -57,14 +53,22 @@
 
 </style>
 
-<div class="about-container" style="float: left;">
-    <img src="\Director_Image.jpg" alt="Director Image" class="director-image"/>
-    <div class="about-text">
-        <div id="title">Meet the Director</div>
-        <div class="b">
-        <p>     Lynita has been the Director of the Faulkner County Museum since February 2001. She is involved in promoting and preserving the history of Faulkner County and the surrounding area through creating exhibits in the museum, and through outreach programs in the community. Since 2002, she has worked with parishioners at St. Joseph’s Catholic Church on the St. Joseph’s 125 Oral History Project “Saving St. Joseph’s”, with the Faulkner County Black Facts and Acts Oral History Projects Phase 1 and Phase 2, with local students on recording oral histories through the “Everyone Has a Story” project celebrating Arkansas Heritage, and most recently in partnership with the Faulkner County Library through the “Arkansas at Work: Dreams and Determination” project to celebrate Arkansas Heritage Month. New and continuing programs at the Museum include historic railroad layout, heirloom garden development, partnering with faculty and staff at UCA to offer service-learning opportunities to students in history and anthropology, development of Faulkner County art collection, development of living history programs and skills demonstrations, development of history internship programs with UCA, Hendrix, and Arkansas Tech University, development of reminiscence programs, presentation of professional development programs to area teachers on topics of Arkansas History, and continued outreach to schools, preschools, and civic groups.</p>
-        <p>     Lynita is a Faulkner County native; she grew up near Greenbrier in the community of Republican. She received a BA in Anthropology from University of Arkansas Fayetteville and a MA in Anthropology from University of Alberta, Canada. In 2006, she completed a Master’s Level Distance Learning Program in Museum Studies from The George Washington University in Washington, D.C. Serves in advisory capacity to Faulkner County Historical Society, is a member of Town and Country Garden Club, a member of the Faulkner County Historical Society, the Arkansas Museums Association, the Arkansas Living History Association, the Arkansas Archeological Society, the Society for Historical Archaeology, and the Registry of Professional Archaeologists.</p>
-        <p>     She lives at Greenbrier on the ancestral dairy farm with her family, consisting of husband Phil, two lovely children, one sassy dachshund, one noisy husky, and three spoiled horses. In her “spare” time, Lynita can be found at home working in her garden, weaving, making quilts, creating beaded jewelry, upcycling thrifted clothing, managing her daughter’s Destination Imagination team, and cooking delicious repasts for her loving (if spoiled) family.</p>
+<div class="container">
+    <div class = 'row'>
+        <div class = 'col-sm-12'>
+            <div id="title">Meet the Director</div>
+        </div>
+    </div>
+    <div class = 'row'>
+        <div class = 'col-sm-5'>
+            <img src="\Director_Image.jpg" alt="Director Image" class="director-image"/>
+        </div>
+        <div class = 'col-sm-7'>
+            <div class="about-text">
+                <p>     Lynita has been the Director of the Faulkner County Museum since February 2001. She is involved in promoting and preserving the history of Faulkner County and the surrounding area through creating exhibits in the museum, and through outreach programs in the community. Since 2002, she has worked with parishioners at St. Joseph’s Catholic Church on the St. Joseph’s 125 Oral History Project “Saving St. Joseph’s”, with the Faulkner County Black Facts and Acts Oral History Projects Phase 1 and Phase 2, with local students on recording oral histories through the “Everyone Has a Story” project celebrating Arkansas Heritage, and most recently in partnership with the Faulkner County Library through the “Arkansas at Work: Dreams and Determination” project to celebrate Arkansas Heritage Month. New and continuing programs at the Museum include historic railroad layout, heirloom garden development, partnering with faculty and staff at UCA to offer service-learning opportunities to students in history and anthropology, development of Faulkner County art collection, development of living history programs and skills demonstrations, development of history internship programs with UCA, Hendrix, and Arkansas Tech University, development of reminiscence programs, presentation of professional development programs to area teachers on topics of Arkansas History, and continued outreach to schools, preschools, and civic groups.</p>
+                <p>     Lynita is a Faulkner County native; she grew up near Greenbrier in the community of Republican. She received a BA in Anthropology from University of Arkansas Fayetteville and a MA in Anthropology from University of Alberta, Canada. In 2006, she completed a Master’s Level Distance Learning Program in Museum Studies from The George Washington University in Washington, D.C. Serves in advisory capacity to Faulkner County Historical Society, is a member of Town and Country Garden Club, a member of the Faulkner County Historical Society, the Arkansas Museums Association, the Arkansas Living History Association, the Arkansas Archeological Society, the Society for Historical Archaeology, and the Registry of Professional Archaeologists.</p>
+                <p>     She lives at Greenbrier on the ancestral dairy farm with her family, consisting of husband Phil, two lovely children, one sassy dachshund, one noisy husky, and three spoiled horses. In her “spare” time, Lynita can be found at home working in her garden, weaving, making quilts, creating beaded jewelry, upcycling thrifted clothing, managing her daughter’s Destination Imagination team, and cooking delicious repasts for her loving (if spoiled) family.</p>
+            </div>
         </div>
     </div>
 </div>
