@@ -53,12 +53,12 @@ header {
   bottom: 0;
   width: 100%;
   white-space: normal;
-  line-height: auto;
   background-color:#fff;
   z-index: 2;
   font-family: 'Carlito', sans-serif;
   padding-top: 2%;
   margin-top: 2%;
+  margin-bottom: 0%;
   
 }
 
@@ -67,5 +67,3 @@ header {
   text-align: center;
   float: inline-start;
 }
-
-

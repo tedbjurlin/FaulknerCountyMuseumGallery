@@ -1,7 +1,7 @@
 
 
 .instaL_img {
-    width: 15%;
+    width: 30px;
     height: auto;
     float: right;
     
@@ -15,7 +15,7 @@
   }
   
   .faceL_img {
-    width: 15%;
+    width: 30px;
     height: auto;
     float: right;
     transition: transform 0.5s;
