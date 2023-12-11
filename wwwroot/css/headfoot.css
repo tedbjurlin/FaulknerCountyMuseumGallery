@@ -68,6 +68,7 @@
     /* animation: circle 1s; */
     /* transition: circle 1s; */
   }
+}
 
 @keyframes circle {
   0% {
