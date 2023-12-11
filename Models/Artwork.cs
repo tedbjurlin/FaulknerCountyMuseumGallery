@@ -8,6 +8,7 @@ namespace FaulknerCountyMuseumGallery.Models
         [Required]
         public string Title { get; set; }
         [Required]
+        [Display(Name = "Accession Number")]
         public string AccessionNumber { get; set; }
         [Required]
         [Display(Name = "Image URL")]
