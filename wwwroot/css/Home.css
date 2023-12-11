@@ -22,8 +22,33 @@
     overflow: hidden;
     border-style: solid;
     border-color: black;
-    font-size: 1.5vw;
+    font-size: 150%;
+    font-family: 'Carlito', sans-serif;
 }
+
+@media (max-width: 1300px) {
+    .logo {
+        font-size: 100%;
+    }
+  }
+@media (max-width: 900px) {
+    .logo {
+        font-size: 80%;
+    }
+  }
+@media (max-width: 800px) {
+    .logo {
+        font-size: 70%;
+        width: 20%;
+    }
+  }
+@media (max-width: 500px) {
+    .logo {
+    font-size: 50%;
+    width: 20%;
+    }
+  }
+  
 
 .M_logo_img {
     width: 100%;
