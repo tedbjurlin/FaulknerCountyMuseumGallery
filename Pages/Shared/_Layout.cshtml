@@ -66,28 +66,26 @@
     <footer class="border-top footer text-muted">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <p>The Faulkner County Museum is a nonprofit registered under 501(c)(3) #71-0726554.</p>
                 </div>
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    <div class="col-sm-2">
-                        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
-                            <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
-                        </form>
-                    </div>
+                <div class="col-sm-4" style = 'text-align: center; display: flex; justify-content: center;'>
+                    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })">
+                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark border-0">Logout</button>
+                    </form>
+                </div>
                 }
                 else
                 {
-                    <div class="col-sm-2">
+                    <div class="col-sm-4" style = 'text-align: center'>
                         <a class="nav-link text-dark" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
                     </div>
                 }
                 <div class="col-sm-4">
-                    <div class="float-right">
-                        <a href="https://www.instagram.com/faulknercountymuseum/"><img class="instaL_img" src="~/instagram_logo.png" alt="img"/></a>
-                        <a href="https://www.facebook.com/FaulknerCoMuseum/"><img class="faceL_img" src="~/face_book_logo.webp" alt="img"/></a>
-                    </div>
+                    <a href="https://www.instagram.com/faulknercountymuseum/"><img class="instaL_img" src="~/instagram_logo.png" alt="img"/></a>
+                    <a href="https://www.facebook.com/FaulknerCoMuseum/"><img class="faceL_img" src="~/face_book_logo.webp" alt="img"/></a>
                 </div>
             </div>
         </div>
@@ -98,7 +96,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/headfoot.js"></script>
 
-   @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 
     <script type="text/javascript">
         $.ajax({

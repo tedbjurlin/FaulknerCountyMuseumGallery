@@ -47,6 +47,7 @@ nav {
   border-color: black;
   margin-top: 10px;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 #titleb {
@@ -140,6 +141,7 @@ nav {
   border-style: solid;
   border-color: black;
   padding: 10px;
+  margin-bottom: 40px;
   background-color: #f8f7f3;
   text-align: center;
 }
@@ -156,7 +158,15 @@ nav {
 
 }
 
-
+.bbb {
+  border-style: solid;
+  border-color: black;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #f8f7f3;
+  text-align: center;
+  width: 100%;
+}
 
 .bb {
   border-style: solid;
@@ -236,7 +246,7 @@ nav {
     margin-top: 10px;
     margin-bottom: 10px;
     float: left;
-    width: 1296px;
+    width: 100%;
   }
 
   #popoverLink {

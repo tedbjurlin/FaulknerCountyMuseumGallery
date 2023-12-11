@@ -4,69 +4,75 @@
 @{
     ViewData["Title"] = "Artists";
 }
-
-<div  id="page_title">Artists</div>
-
-@* <p>
-    <a asp-page="Create">Create New</a>
-</p> *@
-
-<form asp-page="./Index" method="get" class="b" style="float: left; width: 100%; margin-bottom: 10px;">
-    <div class="form-actions no-color">
-        <p style="margin-top: 10px; margin-bottom: 10px;">
-            Find by name:
-            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Search" class="searchb" /> |
-            <a class="green-link" asp-page="./Index">Back to full List</a>
-        </p>
+<div class="container">
+    <div class="row">
+    <div  id="page_title">Artists</div>
     </div>
-</form>
+    @* <p>
+        <a asp-page="Create">Create New</a>
+    </p> *@
+    <div class="row">
+    <form asp-page="./Index" method="get" class="b" style="float: left; width: 100%; margin-bottom: 10px;">
+        <div class="form-actions no-color">
+            <p style="margin-top: 10px; margin-bottom: 10px;">
+                Find by name:
+                <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+                <input type="submit" value="Search" class="searchb" /> |
+                <a class="green-link" asp-page="./Index">Back to full List</a>
+            </p>
+        </div>
+    </form>
+    </div>
+    <div class="row">
+    <table class="table bbb">
+        <thead>
+            <tr class="top">
+                <th>
+                    <a class="column_name" asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                        asp-route-currentFilter="@Model.CurrentFilter">
+                        @Html.DisplayNameFor(model => model.Artists[0].Name)
+                    </a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.Artists) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a class="green-link" asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a class="green-link" asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a class="green-link" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+    </div>
+    <div class="row">
+    <a class="add_button" asp-page="Create">+</a>
 
-<table class="table b">
-    <thead>
-        <tr class="top">
-            <th>
-                <a class="column_name" asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
-                    asp-route-currentFilter="@Model.CurrentFilter">
-                    @Html.DisplayNameFor(model => model.Artists[0].Name)
-                </a>
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Artists) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a class="green-link" asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a class="green-link" asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a class="green-link" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-<a class="add_button" asp-page="Create">+</a>
+    @{
+        var prevDisabled = !Model.Artists.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.Artists.HasNextPage ? "disabled" : "";
+    }
 
-@{
-    var prevDisabled = !Model.Artists.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.Artists.HasNextPage ? "disabled" : "";
-}
-
-<a asp-page="./Index"
-   asp-route-sortOrder="@Model.CurrentSort"
-   asp-route-pageIndex="@(Model.Artists.PageIndex - 1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
-   class="searchb @prevDisabled">
-    Previous
-</a>
-<a asp-page="./Index"
-   asp-route-sortOrder="@Model.CurrentSort"
-   asp-route-pageIndex="@(Model.Artists.PageIndex + 1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
-   class="searchb @nextDisabled">
-    Next
-</a>
+    <a asp-page="./Index"
+    asp-route-sortOrder="@Model.CurrentSort"
+    asp-route-pageIndex="@(Model.Artists.PageIndex - 1)"
+    asp-route-currentFilter="@Model.CurrentFilter"
+    class="searchb @prevDisabled">
+        Previous
+    </a>
+    <a asp-page="./Index"
+    asp-route-sortOrder="@Model.CurrentSort"
+    asp-route-pageIndex="@(Model.Artists.PageIndex + 1)"
+    asp-route-currentFilter="@Model.CurrentFilter"
+    class="searchb @nextDisabled">
+        Next
+    </a>
+</div>
+</div>
