@@ -80,7 +80,6 @@ div.desc {
 }
 </style>
 
-
 <div  id="page_title">Digital Gallery</div>
 <div class="b" style="float: left; width: 100%; margin-bottom: 5rem">
 <form asp-page="./Gallery" method="get">
@@ -102,38 +101,40 @@ div.desc {
 <hr />
 
   <section id="photos">
-  @if ( Model.ArtworkData.Artworks.Count != 0) {
-      @foreach (var item in Model.ArtworkData.Artworks) {
-          <div class="responsive">
-          <div class="gallery" >
-              <a target="_self" asp-page="./GalleryDetails" asp-route-id="@item.ArtworkID">
-              <img class="gallery_image" src="@Html.DisplayFor(modelItem => item.ImageLink)" alt="@Html.DisplayFor(modelItem => item.Title)" width="600" height="400">
-              </a>
-              <div class="desc">@Html.DisplayFor(modelItem => item.Title)</div>
+    @if ( Model.ArtworkData.Artworks.Count != 0) {
+        @foreach (var item in Model.ArtworkData.Artworks) {
+          <div class="art_container">
+            <div class="responsive">
+              <div class="gallery" >
+                  <a target="_self" asp-page="./GalleryDetails" asp-route-id="@item.ArtworkID">
+                  <img class="gallery_image" src="@Html.DisplayFor(modelItem => item.ImageLink)" alt="@Html.DisplayFor(modelItem => item.Title)" width="600" height="400">
+                  </a>
+                  <div class="desc">@Html.DisplayFor(modelItem => item.Title)</div>
+              </div>
+            </div>
           </div>
-          </div>
-          }
+            }
+    }
+    else {
+      <div>No artworks</div>
+    }
+        <script src="js/gallery.js"></script>
+    </section>
+    @{
+      var prevDisabled = !Model.ArtworkData.Artworks.HasPreviousPage ? "disabled" : "";
+      var nextDisabled = !Model.ArtworkData.Artworks.HasNextPage ? "disabled" : "";
   }
-  else {
-    <div>No artworks</div>
-  }
-      @* <script src="js/gallery.js"> *@
-  </section>
-  @{
-    var prevDisabled = !Model.ArtworkData.Artworks.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.ArtworkData.Artworks.HasNextPage ? "disabled" : "";
-}
 
-<a asp-page="./Gallery"
-   asp-route-pageIndex="@(Model.ArtworkData.Artworks.PageIndex - 1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
-   class="searchb @prevDisabled">
-    Previous
-</a>
-<a asp-page="./Gallery"
-   asp-route-pageIndex="@(Model.ArtworkData.Artworks.PageIndex + 1)"
-   asp-route-currentFilter="@Model.CurrentFilter"
-   class="searchb @nextDisabled">
-    Next
-</a>
+  <a asp-page="./Gallery"
+    asp-route-pageIndex="@(Model.ArtworkData.Artworks.PageIndex - 1)"
+    asp-route-currentFilter="@Model.CurrentFilter"
+    class="searchb @prevDisabled">
+      Previous
+  </a>
+  <a asp-page="./Gallery"
+    asp-route-pageIndex="@(Model.ArtworkData.Artworks.PageIndex + 1)"
+    asp-route-currentFilter="@Model.CurrentFilter"
+    class="searchb @nextDisabled">
+      Next
+  </a>
 </div>

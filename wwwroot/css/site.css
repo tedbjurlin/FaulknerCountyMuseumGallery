@@ -89,7 +89,7 @@ nav {
   margin: auto;
 }
 
-.searchb {
+.searchb, a.searchb {
   font-size: 20px;
   font-family: 'Carlito', sans-serif;
   color: black;
@@ -107,10 +107,29 @@ nav {
 }
 
 
+.searchb, input.searchb {
+  font-size: 20px;
+  font-family: 'Carlito', sans-serif;
+  color: black;
+  text-align: center;
+  background-color: #72bb53;
+  padding: 5px;
+  margin: 10px;
+  border-style: solid;
+  border-color: black;
+  text-decoration: none;
+  transition: 1s;
+  border-width: 2px;
+  line-height: 1;
+
+}
+
+
 .searchb:hover {
   animation: color_shift 0.5s;
   background-color: #6baf4e;
 }
+
 
 .searchb:disabled, .searchb.disabled, fieldset:disabled .searchb {
   pointer-events: none;
