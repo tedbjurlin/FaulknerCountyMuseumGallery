@@ -4,14 +4,11 @@
 @{
     ViewData["Title"] = "Artists";
 }
-<div class="container">
-    <div class="row">
+
     <div  id="page_title">Artists</div>
-    </div>
     @* <p>
         <a asp-page="Create">Create New</a>
     </p> *@
-    <div class="row">
     <form asp-page="./Index" method="get" class="b" style="float: left; width: 100%; margin-bottom: 10px;">
         <div class="form-actions no-color">
             <p style="margin-top: 10px; margin-bottom: 10px;">
@@ -22,9 +19,7 @@
             </p>
         </div>
     </form>
-    </div>
-    <div class="row">
-    <table class="table bbb">
+    <table class="table b">
         <thead>
             <tr class="top">
                 <th>
@@ -51,8 +46,7 @@
     }
         </tbody>
     </table>
-    </div>
-    <div class="row">
+
     <a class="add_button" asp-page="Create">+</a>
 
     @{
@@ -74,5 +68,3 @@
     class="searchb @nextDisabled">
         Next
     </a>
-</div>
-</div>
