@@ -52,7 +52,7 @@ header {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 4em;
+  max-height: 4em;
   white-space: normal;
   background-color:#fff;
   z-index: 2;
@@ -61,6 +61,14 @@ header {
   margin-top: 2%;
   margin-bottom: 0%;
   
+}
+
+@media (max-width: 500px) {
+  .footer {
+  max-height: 2em;
+  padding-top: 1%;
+  margin-bottom: -1%;
+  }
 }
 
 .license {
