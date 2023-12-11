@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="~/css/headfoot.css"/>
     <link rel="stylesheet" href="~/css/login.css"/>
     <link rel="stylesheet" href="~/css/backend_styling.css"/>
+    <link rel="stylesheet" href="~/css/gallery.css"/>
     @* links for carlito font *@
     @* use: font-family: 'Carlito', sans-serif; in css *@
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,13 +40,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class = "navbar-nav">
-                    <a class="nav-item nav-link" style="color: black;" asp-page="/Index">Home</a>
-                    <a class="nav-item nav-link" style="color: black;" asp-page="/About">About</a>
-                    <a class="nav-item nav-link" style="color: black;" asp-page="/Gallery">Gallery</a>
-                    <a class="nav-item nav-link" style="color: black;" target="_blank" href="https://my-site-104396.square.site">Donate</a>
+                    <a class="nav-item nav-link" style="color: black;" asp-page="/Index"><div class="circle">Home</div></a>
+                    <a class="nav-item nav-link" style="color: black;" asp-page="/About"><div class="circle">About</div></a>
+                    <a class="nav-item nav-link" style="color: black;" asp-page="/Gallery"><div class="circle">Gallery</div></a>
+                    <a class="nav-item nav-link" style="color: black;" target="_blank" href="https://my-site-104396.square.site"><div class="circle">Donate</div></a>
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <a class="nav-item nav-link" style="color: black;" asp-page="/Admin"><div>Admin</div></a>
+                        <a class="nav-item nav-link" style="color: black;" asp-page="/Admin"><div class="circle">Admin</div></a>
                     }
                     </ul>
             </div>
@@ -95,6 +96,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/headfoot.js"></script>
 
    @RenderSection("Scripts", required: false)
 

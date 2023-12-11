@@ -1,0 +1,11 @@
+
+
+
+.art_container {
+    transition: 1s;
+}
+
+
+.art_container:hover {
+    transform:scale(1.1);
+}
